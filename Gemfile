@@ -26,3 +26,4 @@ gem 'cancancan', '~> 1.10.1'
 gem 'role_model'
 gem 'paperclip', :git => "git://github.com/thoughtbot/paperclip.git"
 gem 'rmagick'
+gem 'react_on_rails'

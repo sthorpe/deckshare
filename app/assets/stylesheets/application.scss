@@ -13,8 +13,46 @@
  *= require_tree .
  *= require_self
  */
+ // "bootstrap-sprockets" must be imported before "bootstrap" and "bootstrap/variables"
+ @import "bootstrap-sprockets";
+ @import "bootstrap";
+
+/*
+ * Globals
+ */
+
+/* Links */
+a,
+a:focus,
+a:hover {
+  color: #fff;
+}
+
+/* Custom default button */
+.btn-default,
+.btn-default:hover,
+.btn-default:focus {
+  color: blue;
+  text-shadow: none; /* Prevent inheritance from `body` */
+  background-color: #fff;
+  border: 1px solid #fff;
+}
+
+
+/*
+ * Base structure
+ */
 
 html,
 body {
   font-family: 'Roboto', sans-serif;
+  height: 100%;
+  background-color: #333;
+}
+body {
+  color: #000;
+}
+
+.container {
+  background-color: white;
 }

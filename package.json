@@ -11,6 +11,7 @@
     "test": "rspec"
   },
   "dependencies": {
-    "react-annotator": "0.0.1"
+    "react-annotator": "0.0.1",
+    "react-dropzone": "^3.7.3"
   }
 }

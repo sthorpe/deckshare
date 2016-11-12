@@ -3,7 +3,7 @@ ruby '2.3.1'
 
 gem 'rails', '5.0.0'
 gem 'pg'
-gem 'unicorn'
+gem 'puma'
 gem 'sass-rails'
 gem 'compass-rails', github: 'Compass/compass-rails', branch: "master"
 gem 'bootstrap-sass'
@@ -16,8 +16,21 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 group :development, :test do
   gem 'byebug'
-  gem 'web-console', '~> 2.0'
   gem 'spring'
+  gem 'binding_of_caller'
+  gem 'annotate'
+  gem 'better_errors'
+  gem 'bullet'
+  gem 'foreman'
+  gem 'lol_dba'
+  gem 'memory_profiler'
+  gem 'pghero'
+  gem 'powder'
+  gem 'rails-footnotes'
+  gem 'rubocop'
+  gem 'ruby-prof'
+  gem 'squasher'
+  gem 'web-console'
 end
 
 # App specific gems

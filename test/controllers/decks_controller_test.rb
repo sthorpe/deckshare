@@ -17,7 +17,7 @@ class DecksControllerTest < ActionDispatch::IntegrationTest
 
   test "should create deck" do
     assert_difference('Deck.count') do
-      post decks_url, params: { deck: {  } }
+      post decks_url, params: { deck: { description: @deck.description, name: @deck.name, user_id: @deck.user_id } }
     end
 
     assert_redirected_to deck_url(Deck.last)
@@ -34,7 +34,7 @@ class DecksControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update deck" do
-    patch deck_url(@deck), params: { deck: {  } }
+    patch deck_url(@deck), params: { deck: { description: @deck.description, name: @deck.name, user_id: @deck.user_id } }
     assert_redirected_to deck_url(@deck)
   end
 

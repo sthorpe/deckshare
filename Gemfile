@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-
+ruby '2.3.1'
 
 gem 'rails', '5.0.0'
 gem 'pg'
@@ -27,3 +27,5 @@ gem 'role_model'
 gem 'paperclip', :git => "git://github.com/thoughtbot/paperclip.git"
 gem 'rmagick'
 gem 'react_on_rails'
+gem 'rails_admin', '>= 1.0.0.rc'
+gem 'mini_racer', platforms: :ruby

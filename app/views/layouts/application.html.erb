@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Deckshare</title>
+  <title>dogo</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
@@ -14,7 +14,7 @@
 </head>
 <body>
   <%= render partial: '/shared/nav' %>
-  <p class="alert"><%= alert %></p>
+  <p class="alert pt-callout pt-intent-primary pt-icon-info-sign"><%= alert %></p>
   <div class="container">
     <div class="row">
       <%= yield %>

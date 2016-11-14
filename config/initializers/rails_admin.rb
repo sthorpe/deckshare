@@ -1,7 +1,7 @@
 RailsAdmin.config do |config|
 
   ### Popular gems integration
-  config.main_app_name = ["DoGo", "BackOffice"]
+  config.main_app_name = ["dogo", "BackOffice"]
   ## == Devise ==
   config.authenticate_with do
      warden.authenticate! scope: :user

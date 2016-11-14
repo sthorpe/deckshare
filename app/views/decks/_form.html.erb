@@ -1,3 +1,4 @@
+<div class="newDeck">
 <%= form_for(deck) do |f| %>
   <% if deck.errors.any? %>
     <div id="error_explanation">
@@ -11,18 +12,23 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :name %>
-    <%= f.text_field :name %>
+    <%= f.label :name %><br />
+    <%= f.text_field :name, class: 'pt-input' %>
   </div>
 
   <div class="field">
-    <%= f.label :description %>
-    <%= f.text_field :description %>
+    <%= f.label :description %><br />
+    <%= f.text_area :description, class: 'pt-input' %>
   </div>
 
   <%= f.hidden_field :user_id, value: current_user.id %>
 
+  <br />
+  <br />
+  <br />
+  <br />
+
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit(class: 'pt-button pt-icon-add pt-intent-success', style: 'width:100px;') %>
   </div>
 <% end %>

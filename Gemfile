@@ -33,6 +33,22 @@ group :development, :test do
   gem 'web-console'
 end
 
+group :test do
+  gem 'capybara'
+  gem 'factory_girl_rails'
+  gem 'shoulda-matchers'
+  gem 'fixture_builder'
+  gem 'database_cleaner'
+  gem 'guard-rspec'
+  gem 'rspec-context-private'
+  gem 'rspec-sidekiq'
+  gem 'rspec-core'
+  gem 'shoulda-callback-matchers'
+  gem 'launchy'
+  gem 'timecop'
+  gem 'faker'
+end
+
 # App specific gems
 gem 'devise', :git => 'git://github.com/twalpole/devise.git'
 gem 'cancancan', '~> 1.10.1'

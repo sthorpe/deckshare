@@ -1,0 +1,37 @@
+<%= form_for(share) do |f| %>
+  <% if share.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(share.errors.count, "error") %> prohibited this share from being saved:</h2>
+
+      <ul>
+      <% share.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :url %>
+    <%= f.text_field :url %>
+  </div>
+
+  <div class="field">
+    <%= f.label :visits %>
+    <%= f.text_field :visits %>
+  </div>
+
+  <div class="field">
+    <%= f.label :deck_id %>
+    <%= f.number_field :deck_id %>
+  </div>
+
+  <div class="field">
+    <%= f.label :email %>
+    <%= f.text_field :email %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

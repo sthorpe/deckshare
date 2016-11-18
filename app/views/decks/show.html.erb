@@ -15,5 +15,16 @@
   <%= @deck.user.email %>
 </p>
 
+<p>
+  <iframe src=<%= @deck.document %> width="85%" height="580" style="border: none;"> </iframe>
+</p>
+<p>
+  <div><h4>Details</h4></div>
+  <div>
+    Page Count: <%= @reader.page_count %><br />
+    PDF version: <%= @reader.pdf_version %><br />
+  </div>
+<br />
+<br />
 <%= link_to 'Edit', edit_deck_path(@deck) %> |
 <%= link_to 'Back', decks_path %>

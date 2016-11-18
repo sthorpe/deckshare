@@ -1,26 +1,42 @@
-<h2>Log in</h2>
+<div class="main">
 
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "off" %>
-  </div>
-
-  <% if devise_mapping.rememberable? -%>
-    <div class="field">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
+  <h3>Please Log In, or <a href="/signup">Sign Up</a></h3>
+  <div class="row">
+    <div class="col-xs-6 col-sm-6 col-md-6">
+      <a href="#" class="btn btn-lg btn-primary btn-block">Facebook</a>
     </div>
-  <% end -%>
-
-  <div class="actions">
-    <%= f.submit "Log in" %>
+    <div class="col-xs-6 col-sm-6 col-md-6">
+      <a href="#" class="btn btn-lg btn-info btn-block">LinkedIn</a>
+    </div>
   </div>
-<% end %>
+  <div class="login-or">
+    <hr class="hr-or">
+    <span class="span-or">or</span>
+  </div>
 
-<%= render "devise/shared/links" %>
+  <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+    <div class="form-group">
+      <label for="inputUsernameEmail">Email</label>
+      <%= f.email_field :email, class: 'form-control', autofocus: true %>
+    </div>
+
+    <div class="form-group">
+      <%= link_to "Forgot password?", new_password_path(resource_name), class: "pull-right" %>
+      <label for="inputPassword">Password</label>
+      <%= f.password_field :password, class: 'form-control', autocomplete: "off" %>
+    </div>
+
+    <% if devise_mapping.rememberable? -%>
+      <div class="checkbox pull-right">
+        <label>
+        <%= f.check_box :remember_me %>
+        Remember me </label>
+      </div>
+    <% end -%>
+
+    <div class="actions">
+      <%= f.submit "Log in", class: "btn btn btn-primary" %>
+    </div>
+  <% end %>
+
+</div>

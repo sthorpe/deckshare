@@ -11,11 +11,13 @@ class DecksController < ApplicationController
   # GET /decks/1
   # GET /decks/1.json
   def show
+    @reader = PDF::Reader.new("#{Rails.root}/public#{@deck.document.url.split('?')[0]}")
   end
 
   # GET /decks/new
   def new
     @deck = Deck.new
+    @pdf_upload = { name: 'deck[attachment]' }
   end
 
   # GET /decks/1/edit
@@ -62,6 +64,11 @@ class DecksController < ApplicationController
     end
   end
 
+  def pdf
+    pdf_filename = File.join(Rails.root, "tmp/my_document.pdf")
+    send_file(pdf_filename, :filename => "your_document.pdf", :type => "application/pdf")
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_deck
@@ -70,6 +77,6 @@ class DecksController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def deck_params
-      params.require(:deck).permit(:name, :description, :user_id)
+      params.require(:deck).permit(:name, :description, :user_id, :document)
     end
 end

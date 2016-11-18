@@ -1,5 +1,5 @@
 <div class="newDeck">
-<%= form_for(deck) do |f| %>
+<%= form_for deck, url: decks_path, html: { multipart: true, remote: true } do |f| %>
   <% if deck.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(deck.errors.count, "error") %> prohibited this deck from being saved:</h2>
@@ -21,10 +21,15 @@
     <%= f.text_area :description, class: 'pt-input' %>
   </div>
 
-  <%= f.hidden_field :user_id, value: current_user.id %>
 
-  <br />
-  <br />
+  <div class="field">
+    <%= f.label :document %><br />
+    <%= f.file_field :document, id: 'deckAttachment' %>
+  </div>
+
+  <%= f.hidden_field :user_id, value: current_user.id %>
+  <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+
   <br />
   <br />
 

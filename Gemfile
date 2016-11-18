@@ -58,3 +58,4 @@ gem 'rmagick'
 gem 'react_on_rails'
 gem 'rails_admin', '>= 1.0.0.rc'
 gem 'mini_racer', platforms: :ruby
+gem 'pdf-reader'

@@ -1,37 +1,60 @@
-<% if user_signed_in? %>
-  <!-- Fixed navbar -->
-  <nav class="navbar navbar-default navbar-fixed-top">
-    <div class="container">
-      <div class="navbar-header">
-        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-          <span class="sr-only">Toggle navigation</span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </button>
-        <a class="navbar-brand" href="/">dogo</a>
-      </div>
-      <div id="navbar" class="navbar-collapse collapse">
-        <ul class="nav navbar-nav">
-            <% if false %>
-            <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
-              <ul class="dropdown-menu">
-                <li><a href="#">Action</a></li>
-                <li><a href="#">Another action</a></li>
-                <li><a href="#">Something else here</a></li>
-                <li role="separator" class="divider"></li>
-                <li class="dropdown-header">Nav header</li>
-                <li><a href="#">Separated link</a></li>
-                <li><a href="#">One more separated link</a></li>
-              </ul>
-            </li>
-            <% end %>
-        </ul>
-        <ul class="nav navbar-nav navbar-right">
-          <li><a href="/logout">Logout</a></li>
-        </ul>
-      </div><!--/.nav-collapse -->
+<% if false %>
+<!-- Fixed navbar -->
+<nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="/"><span class="pt-icon-standard pt-icon-saved" style="font-size: 30px;"></span> dogo</a>
     </div>
-  </nav>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+          <% if false %>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              <li><a href="#">Action</a></li>
+              <li><a href="#">Another action</a></li>
+              <li><a href="#">Something else here</a></li>
+              <li role="separator" class="divider"></li>
+              <li class="dropdown-header">Nav header</li>
+              <li><a href="#">Separated link</a></li>
+              <li><a href="#">One more separated link</a></li>
+            </ul>
+          </li>
+          <% end %>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <% if user_signed_in? %>
+          <li><a href="/logout">Logout</a></li>
+        <% else %>
+          <li><a href="/login">Login</a></li>
+          <li><a href="/signup">Signup</a></li>
+        <% end %>
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div>
+</nav>
 <% end %>
+
+<nav class="pt-navbar">
+  <div class="pt-navbar-group pt-align-left">
+    <div class="pt-navbar-heading"><a class="navbar-brand" href="/"><span class="pt-icon-standard pt-icon-saved" style="font-size: 30px;"></span> dogo</a></div>
+  </div>
+  <div class="pt-navbar-group pt-align-right">
+    <% if user_signed_in? %>
+      <a href="/shares/new"><button class="pt-button pt-minimal pt-icon-people">Invite</button></a>
+      <a href="/shares"><button class="pt-button pt-minimal pt-icon-share">Shares</button></a>
+      <span class="pt-navbar-divider"></span>
+      <a href="/logout">Logout</a>
+    <% else %>
+      <a href="/login">Login</a>
+      <span class="pt-navbar-divider"></span>
+      <a href="/signup">Signup</a>
+    <% end %>
+  </div>
+</nav>

@@ -4,7 +4,7 @@ class SharesController < ApplicationController
   # GET /shares
   # GET /shares.json
   def index
-    @shares = Share.all
+    @shares = current_user.shares
   end
 
   # GET /shares/1

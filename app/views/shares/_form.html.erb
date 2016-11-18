@@ -12,26 +12,16 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :url %>
-    <%= f.text_field :url %>
-  </div>
-
-  <div class="field">
-    <%= f.label :visits %>
-    <%= f.text_field :visits %>
-  </div>
-
-  <div class="field">
-    <%= f.label :deck_id %>
-    <%= f.number_field :deck_id %>
+    <%= f.label :decks %>
+    <%= f.select :deck_id, current_user.decks.collect {|x| [x.name, x.id]}, {}, class: 'pt-input' %>
   </div>
 
   <div class="field">
     <%= f.label :email %>
-    <%= f.text_field :email %>
+    <%= f.text_field :email, class: 'pt-input' %>
   </div>
 
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit('Invite', class: 'pt-button pt-icon-add pt-intent-success', style: 'width:100px;') %>
   </div>
 <% end %>

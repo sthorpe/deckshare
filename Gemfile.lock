@@ -87,6 +87,9 @@ GEM
     aws-sdk-core (2.6.26)
       aws-sigv4 (~> 1.0)
       jmespath (~> 1.0)
+    aws-sdk-rails (1.0.1)
+      aws-sdk-resources (~> 2)
+      railties (>= 3)
     aws-sdk-resources (2.6.26)
       aws-sdk-core (= 2.6.26)
     aws-sigv4 (1.0.0)
@@ -421,6 +424,7 @@ PLATFORMS
 DEPENDENCIES
   annotate
   aws-sdk (~> 2.0)
+  aws-sdk-rails
   better_errors
   binding_of_caller
   bootstrap-sass

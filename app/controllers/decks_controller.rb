@@ -11,7 +11,7 @@ class DecksController < ApplicationController
   # GET /decks/1
   # GET /decks/1.json
   def show
-    @reader = PDF::Reader.new("#{Rails.root}/public#{@deck.document.url.split('?')[0]}")
+    #@reader = PDF::Reader.new("https:#{@deck.document.url}")
   end
 
   # GET /decks/new

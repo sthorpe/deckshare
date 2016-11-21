@@ -82,6 +82,11 @@ GEM
     ast (2.3.0)
     autoprefixer-rails (6.5.3)
       execjs
+    aws-sdk (1.5.8)
+      httparty (~> 0.7)
+      json (~> 1.4)
+      nokogiri (>= 1.4.4)
+      uuidtools (~> 2.1)
     bcrypt (3.1.11)
     better_errors (2.1.1)
       coderay (>= 1.0.0)
@@ -188,6 +193,8 @@ GEM
       tilt
     hashery (2.1.2)
     hitimes (1.2.4)
+    httparty (0.14.0)
+      multi_xml (>= 0.5.2)
     i18n (0.7.0)
     jbuilder (2.6.0)
       activesupport (>= 3.0.0, < 5.1)
@@ -229,6 +236,7 @@ GEM
       libv8 (~> 5.3)
     minitest (5.9.1)
     multi_json (1.12.1)
+    multi_xml (0.5.5)
     nenv (0.3.0)
     nested_form (0.3.2)
     nio4r (1.2.1)
@@ -393,6 +401,7 @@ GEM
       execjs (>= 0.3.0, < 3)
     unicode-display_width (1.1.1)
     uniform_notifier (1.10.0)
+    uuidtools (2.1.5)
     warden (1.2.6)
       rack (>= 1.0)
     web-console (3.4.0)
@@ -411,6 +420,7 @@ PLATFORMS
 
 DEPENDENCIES
   annotate
+  aws-sdk
   better_errors
   binding_of_caller
   bootstrap-sass

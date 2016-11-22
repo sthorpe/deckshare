@@ -1,45 +1,31 @@
 <div class="main">
 
-  <h3>Please Sign up, or <a href="/login">Log in</a></h3>
-  <div class="row">
-    <div class="col-xs-6 col-sm-6 col-md-6">
-      <a href="#" class="btn btn-lg btn-primary btn-block">Facebook</a>
-    </div>
-    <div class="col-xs-6 col-sm-6 col-md-6">
-      <a href="#" class="btn btn-lg btn-info btn-block">LinkedIn</a>
-    </div>
+  <div class="form-top element-bg mb-30">
+
+    <h4 class="form-element-title">Sign up</h4>
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: {class: 'epic-signup-form padding-xs-30 padding-sm-20 padding-md-30'}) do |f| %>
+      <%= devise_error_messages! %>
+
+      <div class="input-group epic-input-addon mb-20">
+        <span class="input-group-addon"><i class="euki-user"></i></span>
+        <%= f.email_field :email, class: 'form-control epic-form-input input-lg', placeholder: 'email', autofocus: true %>
+      </div>
+
+      <div class="input-group epic-input-addon mb-20">
+        <span class="input-group-addon"><i class="euki-lock"></i></span>
+        <%= f.password_field :password, class: 'form-control epic-form-input input-lg', placeholder: 'password', autocomplete: "off" %>
+      </div>
+
+      <div class="input-group epic-input-addon mb-20">
+        <span class="input-group-addon"><i class="euki-lock"></i></span>
+        <%= f.password_field :password_confirmation, class: 'form-control epic-form-input input-lg', placeholder: 'confirm password', autocomplete: "off" %>
+      </div>
+
+      <div class="actions">
+        <%= f.submit "Sign up", class: "btn btn-block btn-lg form-btn btn-style" %>
+      </div>
+    <% end %>
+
   </div>
-  <div class="login-or">
-    <hr class="hr-or">
-    <span class="span-or">or</span>
-  </div>
-
-
-  <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-    <%= devise_error_messages! %>
-
-    <div class="form-group">
-      <%= f.label :email %><br />
-      <%= f.email_field :email, class: 'form-control', autofocus: true %>
-    </div>
-
-    <div class="form-group">
-      <%= f.label :password %>
-      <% if @minimum_password_length %>
-      <em>(<%= @minimum_password_length %> characters minimum)</em>
-      <% end %><br />
-      <%= f.password_field :password, class: 'form-control', autocomplete: "off" %>
-    </div>
-
-    <div class="form-group">
-      <%= f.label :password_confirmation %><br />
-      <%= f.password_field :password_confirmation, class: 'form-control', autocomplete: "off" %>
-    </div>
-
-    <div class="actions">
-      <%= f.submit "Sign up", class: "btn btn btn-primary" %>
-    </div>
-  <% end %>
-
 
 </div>

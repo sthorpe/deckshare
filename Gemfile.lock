@@ -422,6 +422,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  actioncable
   annotate
   aws-sdk (~> 2.0)
   aws-sdk-rails

@@ -1,0 +1,6 @@
+$("#loader").show();
+setTimeout(function(){
+  $("#loader").hide();
+  $('#messages').append('<%=j render @message, current_user: @current_user %>');
+  $('#right-chat-input').val('')
+}, 1000);

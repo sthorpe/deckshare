@@ -10,12 +10,14 @@
  * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
  * file per style scope.
  *
- *= require_tree .
- *= require_self
- */
  // "bootstrap-sprockets" must be imported before "bootstrap" and "bootstrap/variables"
  @import "bootstrap-sprockets";
  @import "bootstrap";
+
+ *= require_tree .
+ *= require_self
+ */
+
 
 /*
  * Globals
@@ -30,16 +32,6 @@ a:hover, a:visited, a:link, a:active
     text-decoration: none;
 }
 
-/* Custom default button */
-.btn-default,
-.btn-default:hover,
-.btn-default:focus {
-  color: blue;
-  text-shadow: none; /* Prevent inheritance from `body` */
-  background-color: #fff;
-  border: 1px solid #fff;
-}
-
 
 /*
  * Base structure
@@ -47,16 +39,13 @@ a:hover, a:visited, a:link, a:active
 
 html,
 body {
-  font-family: 'Bree Serif', serif;
+  font-family: 'Roboto', serif;
   height: 100%;
-}
-body {
-  color: #000;
 }
 button:focus {outline:0;}
 .navbar-brand {
-  font-family: 'Bree Serif', serif;
-  color: #0E5A8A;
+  font-family: 'Roboto', serif;
+  color: #8c91ff;
   padding: 10px 0px;
 }
 .container {
@@ -69,6 +58,7 @@ button:focus {outline:0;}
 .main {
   max-width: 320px;
   margin: 0 auto;
+  padding-top: 100px;
 }
 .login-or {
   position: relative;

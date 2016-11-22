@@ -2,11 +2,12 @@ Rails.application.routes.draw do
   resources :comments
   resources :messages
   resources :shares
+  mount PdfjsViewer::Rails::Engine => "/pdfjs", as: 'pdfjs'
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   devise_for :users, controllers: {
     sessions: 'users/sessions'
   }
-  
+
   devise_scope :user do
     get "/login" => "devise/sessions#new"
     get "/logout" => "devise/sessions#destroy"

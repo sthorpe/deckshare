@@ -1,29 +1,28 @@
-<div class='row'>
-  <div class='col-md-2'>
-   <h4>Slides</h4>
-  </div>
-  <div id="document" class='col-md-8'>
-    <h1> HIGHLIGHT ME WITH THE MOUSE </h1>
-    <p>
-      <iframe  src=<%= @deck.document %> width="85%" height="500" style="border: none;"> </iframe>
-    </p>
-  </div>
-  <div class='col-md-2'>
-    <h4>Chat</h4>
-      <%= render 'messages/messages', default_deck: @deck %>
-          <!-- Text input field -->
-      <div class="chat-padding">
-        <div class="chat-input-area">
-          <%= form_for(@message, :remote => true) do |f| %>
-            <%= f.hidden_field(:user_id, :value => current_user.id) %>
-            <%= f.hidden_field(:deck_id, :id => "update_deck_chat_id", :value => @deck.id) %>
-            <i class="fa fa-cog fa-spin fa-2x" id="loader" style="display:none;-webkit-text-stroke-width: 1px;-webkit-text-stroke-color: #7AAF6D;color:#3E4550;position:absolute;left:-7%;bottom:8px;"></i>
-            <%= f.text_field :content, :class => "right-chat-input", :id => "right-chat-input", :placeholder => "Say Something...", autocomplete: "off" %>
-            <input type="submit" style="visibility: hidden;" />
-          <% end %>
-        </div>
+
+<div class='col-md-2'>
+ <h4>Slides</h4>
+</div>
+<div id="document" class='col-md-8'>
+  <h1> HIGHLIGHT ME WITH THE MOUSE </h1>
+  <p>
+    <iframe  src=<%= @deck.document %> width="85%" height="500" style="border: none;"> </iframe>
+  </p>
+</div>
+<div class='col-md-2'>
+  <h4>Chat</h4>
+    <%= render 'messages/messages', default_deck: @deck %>
+        <!-- Text input field -->
+    <div class="chat-padding">
+      <div class="chat-input-area">
+        <%= form_for(@message, :remote => true) do |f| %>
+          <%= f.hidden_field(:user_id, :value => current_user.id) %>
+          <%= f.hidden_field(:deck_id, :id => "update_deck_chat_id", :value => @deck.id) %>
+          <i class="fa fa-cog fa-spin fa-2x" id="loader" style="display:none;-webkit-text-stroke-width: 1px;-webkit-text-stroke-color: #7AAF6D;color:#3E4550;position:absolute;left:-7%;bottom:8px;"></i>
+          <%= f.text_field :content, :class => "right-chat-input", :id => "right-chat-input", :placeholder => "Say Something...", autocomplete: "off" %>
+          <input type="submit" style="visibility: hidden;" />
+        <% end %>
       </div>
-  </div>
+    </div>
 </div>
 
 

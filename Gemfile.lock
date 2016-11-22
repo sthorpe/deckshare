@@ -31,6 +31,11 @@ GIT
       thread_safe (~> 0.1)
       warden (~> 1.2.3)
 
+PATH
+  remote: vendor/gems/pdfjs_viewer-rails-0.0.9
+  specs:
+    pdfjs_viewer-rails (0.0.9)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -450,6 +455,7 @@ DEPENDENCIES
   mini_racer
   paperclip!
   pdf-reader
+  pdfjs_viewer-rails (= 0.0.9)!
   pg
   pghero
   powder

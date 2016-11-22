@@ -30,6 +30,7 @@ class DecksController < ApplicationController
   # POST /decks.json
   def create
     @deck = Deck.new(deck_params)
+    @deck.build_slides
 
     respond_to do |format|
       if @deck.save

@@ -1,6 +1,12 @@
 
 <div class='col-md-2'>
  <h4>Slides</h4>
+ <% @deck.slides.each_with_index do |slide, idx| %>
+  <img src="<%=slide.image.url(:thumb)%>"/>
+  <%= idx %>
+  <br />
+  <br />
+ <% end %>
 </div>
 <div id="document" class='col-md-8'>
   <h1> HIGHLIGHT ME WITH THE MOUSE </h1>
@@ -24,8 +30,6 @@
       </div>
     </div>
 </div>
-
-
 
 <% if @reader %>
   <div><h4>Details</h4></div>

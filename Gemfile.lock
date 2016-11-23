@@ -463,6 +463,7 @@ DEPENDENCIES
   rails-footnotes
   rails_admin (>= 1.0.0.rc)
   react_on_rails
+  redis (~> 3.0)
   rmagick
   role_model
   rspec-context-private

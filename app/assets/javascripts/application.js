@@ -24,4 +24,4 @@
 this.App = {};
 //App.cable = ActionCable.createConsumer("ws://localhost:28080");
 
-App.cable = ActionCable.createConsumer("ws://dogo-staging.herokuapp.com:28080");
+//App.cable = ActionCable.createConsumer("wss://dogo-staging.herokuapp.com:28080");

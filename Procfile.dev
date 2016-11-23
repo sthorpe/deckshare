@@ -1,6 +1,6 @@
+web: bin/cable
 web: rails s -p 3000
 #bundle exec puma -C config/puma.rb -b tcp://127.0.0.1:3000
 client: sh -c 'rm app/assets/webpack/* || true && cd client && npm run build:development'
 #bundle exec puma -p 28080 cable/config.ru
-bin/cable
 redis: redis-server config/redis.conf

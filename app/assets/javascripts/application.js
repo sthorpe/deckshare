@@ -16,4 +16,12 @@
 //= require bootstrap-sprockets
 //= require jquery_ujs
 //= require turbolinks
+//= require action_cable
+//= require_self
+//= require_tree ./cable
 //= require_tree .
+
+this.App = {};
+//App.cable = ActionCable.createConsumer("ws://localhost:28080");
+
+App.cable = ActionCable.createConsumer("ws://dogo-staging.herokuapp.com:28080");

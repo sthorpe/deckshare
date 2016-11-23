@@ -17,7 +17,11 @@
 </div>
 <div class='col-md-2'>
   <h4>Chat</h4>
-    <%= render 'messages/messages', default_deck: @deck %>
+    <div id="chat-log" class="chat-log">
+      <div id="load_deck_chats">
+        <%= render 'messages/messages', default_deck: @deck %>
+      </div>
+    </div>
         <!-- Text input field -->
     <div class="chat-padding">
       <div class="chat-input-area">

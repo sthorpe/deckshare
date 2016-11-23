@@ -61,5 +61,4 @@ gem 'mini_racer', platforms: :ruby
 gem 'pdf-reader'
 gem 'aws-sdk-rails'
 gem 'aws-sdk', '~> 2.0'
-gem 'actioncable'
 gem 'pdfjs_viewer-rails', '0.0.9', :path => 'vendor/gems/pdfjs_viewer-rails-0.0.9'

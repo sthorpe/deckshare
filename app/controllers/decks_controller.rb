@@ -12,7 +12,8 @@ class DecksController < ApplicationController
   # GET /decks/1.json
   def show
     @message = Message.new
-    @messages = Message.all
+    @messages = @deck.messages
+    @default_deck = @deck
     #@reader = PDF::Reader.new("https:#{@deck.document.url}")
   end
 

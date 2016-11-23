@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   resources :comments
   resources :messages
   resources :shares
+  mount ActionCable.server => '/cable'
   mount PdfjsViewer::Rails::Engine => "/pdfjs", as: 'pdfjs'
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   devise_for :users, controllers: {

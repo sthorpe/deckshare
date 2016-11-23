@@ -77,4 +77,7 @@ Rails.application.configure do
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
   config.paperclip_defaults = { s3_host_name: "s3-#{ENV['AWS_REGION']}.amazonaws.com" }
+
+  config.web_socket_server_url = "wss://dogo-staging.herokuapp.com/cable"
+  config.action_cable.allowed_request_origins = ['https://dogo-staging.herokuapp.com', 'http://dogo-staging.herokuapp.com']
 end

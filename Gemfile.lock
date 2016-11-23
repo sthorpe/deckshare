@@ -475,6 +475,7 @@ DEPENDENCIES
   sdoc (~> 0.4.0)
   shoulda-callback-matchers
   shoulda-matchers
+  sidekiq
   spring
   squasher
   timecop

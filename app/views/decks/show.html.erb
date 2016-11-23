@@ -55,6 +55,7 @@ function initAnno() {
     anno.activateSelector();
     $('#document').css('border-color', 'red');
     $('.slide').html("<img src='<%=slide.image%>' id='document' class='annotatable' style='width:96%;'/>");
+    anno.reset();
     initAnno();
   })
 <% end %>

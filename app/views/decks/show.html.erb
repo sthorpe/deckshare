@@ -2,8 +2,10 @@
 <div class='col-md-2'>
  <h4>Slides</h4>
  <% @deck.slides.each_with_index do |slide, idx| %>
-  <img src="<%=slide.image.url(:thumb)%>"/>
-  <%= idx %>
+  <div class="slides_<%=idx%>">
+    <img src="<%=slide.image.url(:thumb)%>"/>
+    <%= idx %>
+  </div>
   <br />
   <br />
  <% end %>
@@ -11,7 +13,7 @@
 <div id="document" class='col-md-8'>
   <h1> HIGHLIGHT ME WITH THE MOUSE </h1>
   <p>
-    <iframe  src=<%= @deck.document %> width="85%" height="500" style="border: none;"> </iframe>
+    <div class="slide"><img src="<%= @deck.slides.first.image.url %>" class="annotatable" style="width:96%;" /></div>
   </p>
 </div>
 <div class='col-md-2'>
@@ -43,4 +45,10 @@
 jQuery(function ($) {
     $('#document').annotator();
 });
+<% @deck.slides.each_with_index do |slide, idx| %>
+  $('.slides_<%=idx%>').on('click', function(){
+    $(this).css('border-color', '#0000FF');
+    $('.slide').html("<img src='<%=slide.image%>' style='width:96%;'/>");
+  })
+<% end %>
 </script>

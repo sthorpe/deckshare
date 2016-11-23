@@ -1,8 +1,5 @@
-# production: &production
-#   :url: redis://localhost:6379
-#   :host: localhost
-#   :port: 6379
-#   :timeout: 1
+production: &production
+  :url: redis://redistogo:bb67e1cd2cc992eecfeb5454416ce52a@crestfish.redistogo.com:9797/
 
 local: &local
   :url: redis://localhost:6379

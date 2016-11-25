@@ -1,4 +1,5 @@
 class Share < ApplicationRecord
+  default_scope { order(created_at: :asc) }
   belongs_to :deck
   before_save :generate_url_code
 

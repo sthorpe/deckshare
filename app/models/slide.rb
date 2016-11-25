@@ -1,4 +1,5 @@
 class Slide < ApplicationRecord
+  default_scope { order(created_at: :asc) }
   has_attached_file :image,
   storage: :s3,
   styles: { medium: "300x300>", thumb: "100x100>" },
@@ -16,4 +17,9 @@ class Slide < ApplicationRecord
 
   QUALITY = 100
   DENSITY = '80x80'
+
+  serialize(:content, JSON)
+
+
+
 end

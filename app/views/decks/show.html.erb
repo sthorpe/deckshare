@@ -7,11 +7,17 @@
     <%= idx %>
     <script>
     $('.slides_<%=idx%>').on('click', function(){
+      dogoAnno.setCurrentSlide(<%=slide.id%>);
       setTimeout(function() {
         $('.slide').html("<img src='<%=slide.image%>' id='document' class='annotatable' style='width:96%;'/>");
       }, 300)
       setTimeout(function() {
         dogoAnno.reset();
+        <% if slide.content %>
+          $(document).ready(function() {
+            dogoAnno.loadAnnotations(<%=raw slide.content.to_json%>);
+          });
+        <% end %>
       }, 400)
     })
     </script>
@@ -53,3 +59,14 @@
     PDF version: <%= @reader.pdf_version %><br />
   </div>
 <% end %>
+<script>
+$(document).ready(function() {
+  setTimeout(function() {
+    dogoAnno.setCurrentSlide(<%=@deck.slides.first.id%>);
+    <% if @deck.slides.first.content %>
+      annotation = [<%=raw @deck.slides.first.content.to_json%>]
+      anno.addAnnotation(annotation[0]);
+    <% end %>
+  }, 1000)
+});
+</script>

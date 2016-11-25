@@ -1,5 +1,6 @@
 
 class Deck < ApplicationRecord
+  default_scope { order(created_at: :asc) }
   has_attached_file :document,
   :storage => :s3,
   :default_url => "homer.png",

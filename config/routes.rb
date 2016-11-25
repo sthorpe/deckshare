@@ -17,7 +17,7 @@ Rails.application.routes.draw do
   end
   resources :decks
 
-
+  post :annotations, to: 'slides#create_annotation'
   get :hello_world, to: 'hello_world#index'
   root to: "home#index"
 end

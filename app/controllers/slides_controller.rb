@@ -1,5 +1,5 @@
 class SlidesController < ApplicationController
-  before_action :set_slide, only: [:show, :edit, :update, :destroy]
+  before_action :set_slide, only: [:show, :edit, :update, :destroy, :create_annotation]
 
   # GET /slides
   # GET /slides.json
@@ -61,6 +61,13 @@ class SlidesController < ApplicationController
     end
   end
 
+  def create_annotation
+    @annotation = params[:annotation]
+    @slide.content = @annotation
+    @slide.save
+    # I will need to update messages with the new annotation.
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_slide
@@ -69,6 +76,6 @@ class SlidesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def slide_params
-      params.fetch(:slide, {})
+      params.require(:slide).permit(:deck_id, :text, :content)
     end
 end

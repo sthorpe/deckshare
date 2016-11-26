@@ -15,7 +15,7 @@ class ApplicationController < ActionController::Base
 
   def after_sign_in_path_for(resource)
     authenticate_user(current_user) # Signal to ActionCable who we are
-    stored_location_for(resource) || vexes_path
+    stored_location_for(resource) || '/'
   end
 
   private

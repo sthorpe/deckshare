@@ -65,7 +65,7 @@ class SlidesController < ApplicationController
     @annotation = params[:annotation]
     @slide.content = @annotation
     @slide.save
-    # I will need to update messages with the new annotation.
+    #TODO: I will need to update messages with the new annotation.
   end
 
   private

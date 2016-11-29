@@ -4,6 +4,9 @@ Rails.application.routes.draw do
   resources :messages
   resources :shares
   mount ActionCable.server => '/cable'
+  authenticate :user, lambda { |u| u.admin? } do
+    mount Sidekiq::Web => '/sidekiq'
+  end
   mount PdfjsViewer::Rails::Engine => "/pdfjs", as: 'pdfjs'
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   devise_for :users, controllers: {

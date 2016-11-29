@@ -1,0 +1,4 @@
+:verbose: false
+:queues:
+  - [upload,1]
+  - default

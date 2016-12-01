@@ -15,7 +15,7 @@ class DecksController < ApplicationController
     @message = Message.new
     @messages = @deck.messages
     @default_deck = @deck
-    #@reader = PDF::Reader.new("https:#{@deck.document.url}")
+    #@reader = PDF::Reader.new("https:#{@deck.pdf_url}")
   end
 
   # GET /decks/new
@@ -36,6 +36,7 @@ class DecksController < ApplicationController
     respond_to do |format|
       if @deck.save
         #UploadWorker.perform_async(@deck.id)
+        @deck.build_slides
         format.html { redirect_to @deck, notice: 'Deck was successfully created.' }
         format.json { render :show, status: :created, location: @deck }
       else
@@ -85,6 +86,6 @@ class DecksController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def deck_params
-      params.require(:deck).permit(:name, :description, :user_id, :pdf)
+      params.require(:deck).permit(:name, :description, :user_id, :pdf_url)
     end
 end

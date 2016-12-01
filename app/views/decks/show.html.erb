@@ -27,7 +27,7 @@
  <% end %>
 </div>
 <div class='col-md-8'>
-  <iframe src="<%= @deck.pdf %>" width="800px" height="600px" >
+  <iframe src="http://docs.google.com/gview?url=http:<%= @deck.pdf_url %>&embedded=true" style="width:600px; height:500px;" frameborder="0"></iframe>
   <% if @deck.slides.present? %>
   <p>
 
@@ -65,7 +65,7 @@
 <% end %>
 <% if @deck.slides.present? %>
 <script>
-$(document).ready(function() {  
+$(document).ready(function() {
   setTimeout(function() {
     DOGOANNO.setCurrentSlide(<%=@deck.slides.first.id%>);
     <% if @deck.slides.first.content %>

@@ -25,7 +25,7 @@
             <tr>
               <td><%= deck.name %></td>
               <td><%= deck.description %></td>
-              <td><%= 10.times.map{ 10 + Random.rand(11) }.first %> </td>
+              <td></td>
               <td><a href="/decks/<%= deck.id %>" title="Show"><span class="pt-icon-standard pt-icon-document-open"></span></a></td>
               <td><a href="/decks/<%= deck.id %>/edit" title="Edit"><span class="pt-icon-standard pt-icon-edit"></span></a></td>
               <td><%= link_to raw('<span class="pt-icon-standard pt-icon-trash"></span>'), deck, method: :delete, data: { confirm: 'Are you sure?' } %></td>

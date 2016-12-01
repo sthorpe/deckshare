@@ -22,7 +22,6 @@ gem 'react_on_rails'
 gem 'rails_admin', '>= 1.0.0.rc'
 gem 'mini_racer', platforms: :ruby
 gem 'pdf-reader'
-gem 'aws-sdk-rails'
 gem 'aws-sdk', '~> 2.0'
 gem 'pdfjs_viewer-rails', '0.0.9', :path => 'vendor/gems/pdfjs_viewer-rails-0.0.9'
 gem 'redis', '~> 3.0'

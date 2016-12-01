@@ -15,6 +15,7 @@
 //= require jquery
 //= require bootstrap-sprockets
 //= require jquery_ujs
+//= require jquery-fileupload/basic
 //= require turbolinks
 //= require action_cable
 //= require_self

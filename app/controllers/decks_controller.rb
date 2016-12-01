@@ -1,6 +1,7 @@
 class DecksController < ApplicationController
   before_action :authenticate_user!
   before_action :set_deck, only: [:show, :edit, :update, :destroy]
+  before_action :set_s3_direct_post, only: [:new, :edit, :create, :update]
 
   # GET /decks
   # GET /decks.json
@@ -31,9 +32,10 @@ class DecksController < ApplicationController
   # POST /decks.json
   def create
     @deck = Deck.new(deck_params)
-    
+
     respond_to do |format|
       if @deck.save
+        #UploadWorker.perform_async(@deck.id)
         format.html { redirect_to @deck, notice: 'Deck was successfully created.' }
         format.json { render :show, status: :created, location: @deck }
       else
@@ -73,6 +75,9 @@ class DecksController < ApplicationController
   end
 
   private
+    def set_s3_direct_post
+      @s3_direct_post = S3_BUCKET.presigned_post(key: "uploads/#{SecureRandom.uuid}/${filename}", success_action_status: '201', acl: 'public-read')
+    end
     # Use callbacks to share common setup or constraints between actions.
     def set_deck
       @deck = Deck.find(params[:id])
@@ -80,6 +85,6 @@ class DecksController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def deck_params
-      params.require(:deck).permit(:name, :description, :user_id, :document)
+      params.require(:deck).permit(:name, :description, :user_id, :pdf)
     end
 end

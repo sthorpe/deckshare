@@ -7,15 +7,15 @@
     <%= idx %>
     <script>
     $('.slides_<%=idx%>').on('click', function(){
-      dogoAnno.setCurrentSlide(<%=slide.id%>);
+      DOGOANNO.setCurrentSlide(<%=slide.id%>);
       setTimeout(function() {
         $('.slide').html("<img src='<%=slide.image%>' id='document' class='annotatable' style='width:96%;'/>");
       }, 300)
       setTimeout(function() {
-        dogoAnno.reset();
+        DOGOANNO.reset();
         <% if slide.content %>
           $(document).ready(function() {
-            dogoAnno.loadAnnotations(<%=raw slide.content.to_json%>);
+            DOGOANNO.loadAnnotations(<%=raw slide.content.to_json%>);
           });
         <% end %>
       }, 400)
@@ -27,8 +27,10 @@
  <% end %>
 </div>
 <div class='col-md-8'>
+  <iframe src="<%= @deck.pdf %>" width="800px" height="600px" >
   <% if @deck.slides.present? %>
   <p>
+
     <div class="slide"><img src="<%= @deck.slides.first.image.url %>" id="document" class="annotatable" style="width:96%;" /></div>
   </p>
   <% end %>
@@ -63,9 +65,9 @@
 <% end %>
 <% if @deck.slides.present? %>
 <script>
-$(document).ready(function() {
+$(document).ready(function() {  
   setTimeout(function() {
-    dogoAnno.setCurrentSlide(<%=@deck.slides.first.id%>);
+    DOGOANNO.setCurrentSlide(<%=@deck.slides.first.id%>);
     <% if @deck.slides.first.content %>
       annotation = [<%=raw @deck.slides.first.content.to_json%>]
       anno.addAnnotation(annotation[0]);

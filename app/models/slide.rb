@@ -19,7 +19,4 @@ class Slide < ApplicationRecord
   DENSITY = '80x80'
 
   serialize(:content, JSON)
-
-
-
 end

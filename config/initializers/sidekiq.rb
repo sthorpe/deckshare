@@ -1,3 +1,4 @@
+require 'resolv-replace'
 # Disable Sidekiq logging
 Sidekiq::Logging.logger = nil
 

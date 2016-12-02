@@ -16,6 +16,8 @@ end
 Sidekiq.configure_server do |config|
   config.redis = { url: redis_url }
 
+  config.average_scheduled_poll_interval = 1
+
   sidekiq_db_pool = 8
 
   # if (database_url = ENV['DATABASE_URL']).present?

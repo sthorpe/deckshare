@@ -3,6 +3,7 @@ this.Uploader = function(){
 Uploader.prototype = {
   detectFile: function(){
     $('.directUpload').find("input:file").each(function(i, elem) {
+      self = this;
       var fileInput    = $(elem);
       var form         = $(fileInput.parents('form:first'));
       var submitButton = form.find('input[type="submit"]');
@@ -56,6 +57,13 @@ Uploader.prototype = {
     var size = file.size;
     var type = file.type;
     console.log(file, name, size, type);
+  },
+  loading: function(){
+    $('body').empty();
+    $('body').html('<center style="padding-top:20%;"><i class="fa fa-refresh fa-spin" style="font-size:124px"></i></center>');
+    setTimeout(function() {
+      location.reload();
+    }, 4000)
   }
 }
 UPLOADER = new Uploader();

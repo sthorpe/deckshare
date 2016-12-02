@@ -21,10 +21,9 @@
     <%= f.text_area :description, class: 'pt-input' %>
   </div>
 
-
   <div class="field">
-    <%= f.label :attachment %><br />
-    <%= f.file_field :pdf_url, id: 'deckAttachment' %>
+    <%= f.label :attachment, class: "pt-file-upload" %><br />
+    <%= f.file_field :pdf_url, id: 'deckAttachment', class: "pt-file-upload-input" %>
   </div>
 
   <div class="notifier" style='width:20%;'></div>

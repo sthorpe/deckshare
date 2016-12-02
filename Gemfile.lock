@@ -637,6 +637,7 @@ DEPENDENCIES
   faker
   fixture_builder
   fog
+  font-awesome-rails
   foreman
   guard-rspec
   jazzhands

@@ -2,7 +2,7 @@
 <div class='col-md-2'>
  <h4>Slides</h4>
  <% @deck.slides.each_with_index do |slide, idx| %>
-  <div class="slides_<%=idx%>" onclick="dogoAnno.activateSelector();dogoAnno.reset();">
+  <div class="slides_<%=idx%>" onclick="dogoAnno.reset();">
     <img src="<%=slide.image.url(:thumb)%>"/>
     <%= idx %>
     <script>
@@ -29,7 +29,7 @@
 <div class='col-md-8'>
   <% if @deck.slides.present? %>
   <p>
-    <div class="slide"><img src="<%= @deck.slides.first.image.url %>" id="document" class="annotatable" style="width:96%;" /></div>
+    <div class="slide"><img src="<%= @deck.slides.first.image %>" id="document" class="annotatable" style="width:96%;" /></div>
   </p>
   <% end %>
 </div>
@@ -74,3 +74,8 @@ $(document).ready(function() {
 });
 </script>
 <% end %>
+<script>
+ <% if !@deck.slides.first %>
+  UPLOADER.loading();
+ <% end %>
+</script>

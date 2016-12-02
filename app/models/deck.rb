@@ -66,23 +66,33 @@ class Deck < ApplicationRecord
     #IO.copy_stream(download, '~/image.png')
   end
 
+  def make_image
+    file = File.join(Dir.tmpdir, "#{self.id}_image.png")
+    `convert -background lightblue -fill blue -font Arial -pointsize 72 label:some-text #{file}`
+    io = File.read(file)
+    self.image = io
+  end
+
   def build_slides
     if valid?
-      # require 'RMagick'
-      # pdf = Magick::ImageList.new("https:#{self.pdf_url}")
-      # pdf.each_with_index do |page_img, i|
-      #   page_img.write "#{i}_pdf_page.jpg"
+      pdf = Magick::ImageList.new("https:#{self.pdf_url}")
+      pdf.each_with_index do |page_img, i|
+        page_img.write "#{i}_pdf_page.jpg"
+        file = File.join(Dir.tmpdir, "#{self.id}_image.png")
+        slides.build(:image => File.read("#{Rails.root}/#{i}_pdf_page.jpg", 'rb'))
+      end
+      save
+
+      # Paperclip.run('convert', "-quality #{Slide::QUALITY} -density #{Slide::DENSITY} #{get_pdf_from_aws.path} #{get_pdf_from_aws.path}%d.png")
+      # images = Dir.glob("#{get_pdf_from_aws.path}*.png").sort_by do |line|
+      #   line.match(/(\d+)\.png$/)[1].to_i
       # end
+      #
+      # images.each do |slide_image|
+      #   slides.build(:image => File.open(slide_image))
+      # end
+      # FileUtils.rm images
 
-      Paperclip.run('convert', "-quality #{Slide::QUALITY} -density #{Slide::DENSITY} #{get_pdf_from_aws.path} #{get_pdf_from_aws.path}%d.png")
-      images = Dir.glob("#{get_pdf_from_aws.path}*.png").sort_by do |line|
-        line.match(/(\d+)\.png$/)[1].to_i
-      end
-
-      images.each do |slide_image|
-        slides.build(:image => File.open(slide_image))
-      end
-      FileUtils.rm images
     end
   end
 end

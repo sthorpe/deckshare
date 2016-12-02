@@ -3,7 +3,7 @@ Sidekiq::Logging.logger = nil
 
 # Writes to default Redis DB - 0
 
-redis_url = ENV['REDIS_URL'] || 'redis://localhost:6379'
+redis_url = ENV['REDIS_URL'] || 'redis://redistogo:bb67e1cd2cc992eecfeb5454416ce52a@crestfish.redistogo.com:9797/'
 
 Sidekiq.configure_client do |config|
   config.redis = { url: redis_url }

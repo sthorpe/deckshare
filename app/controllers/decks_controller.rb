@@ -34,7 +34,8 @@ class DecksController < ApplicationController
 
     respond_to do |format|
       if @deck.save
-        UploadWorker.perform_async(@deck.id)
+        #UploadWorker.perform_async(@deck.id)
+        @deck.build_slides
         format.html { redirect_to @deck, notice: 'Deck was successfully created.' }
         format.json { render :show, status: :created, location: @deck }
       else

@@ -9,8 +9,8 @@ dogoAnno.prototype = {
     anno.activateSelector();
   },
   setCurrentSlide: function(slideNumber){
-    dogoAnno.slideNumber = '';
-    dogoAnno.slideNumber = slideNumber;
+    DOGOANNO.slideNumber = '';
+    DOGOANNO.slideNumber = slideNumber;
   },
   updateComments: function(text){
     $('#messages').append(text);
@@ -20,8 +20,8 @@ dogoAnno.prototype = {
     if(document.URL.split('/')[3] == 'decks' && reg.test(document.URL.split('/')[4])){
       anno.makeAnnotatable(document.getElementById('document'));
       anno.addHandler('onAnnotationCreated', function(annotation) {
-        dogoAnno.updateComments(annotation.text);
-        dogoAnno.save(annotation);
+        DOGOANNO.updateComments(annotation.text);
+        DOGOANNO.save(annotation);
       });
     }
   },
@@ -42,7 +42,7 @@ dogoAnno.prototype = {
     $.ajax({
        url:method1(),
        method: "POST",
-       data: { annotation: annotation, deck_id: annotation.context.split("/").slice(-1)[0], id: dogoAnno.slideNumber },
+       data: { annotation: annotation, deck_id: annotation.context.split("/").slice(-1)[0], id: DOGOANNO.slideNumber },
        success:function(){
        method2();
     }

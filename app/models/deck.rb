@@ -24,14 +24,6 @@ class Deck < ApplicationRecord
     self.file_upload.content_type =~ %r(image)
   end
 
-  def is_video?
-    self.file_upload.content_type =~ %r(video)
-  end
-
-  def is_audio?
-    self.file_upload.content_type =~ /\Aaudio\/.*\Z/
-  end
-
   def is_plain_text?
     self.file_upload_file_name =~ %r{\.(txt)$}i
   end
@@ -53,7 +45,6 @@ class Deck < ApplicationRecord
   end
 
   def has_default_image?
-    is_audio?
     is_plain_text?
     is_excel?
     is_word_document?

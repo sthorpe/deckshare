@@ -2,7 +2,7 @@
 <div class='col-md-2'>
  <h4>Slides</h4>
  <% @deck.slides.each_with_index do |slide, idx| %>
-  <div class="slides_<%=idx%>" onclick="dogoAnno.reset();">
+  <div class="slides_<%=idx%>" onclick="DOGOANNO.activateSelector();DOGOANNO.reset();">
     <img src="<%=slide.image.url(:thumb)%>"/>
     <%= idx %>
     <script>

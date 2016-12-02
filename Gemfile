@@ -36,6 +36,7 @@ gem 'mini_magick'
 gem 'carrierwave_direct'
 gem 'jquery-fileupload-rails', '~> 0.4.1'
 gem 'font-awesome-rails'
+gem 'bugsnag'
 
 group :development, :test do
   gem 'byebug'

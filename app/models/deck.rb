@@ -75,7 +75,7 @@ class Deck < ApplicationRecord
 
   def build_slides
     if valid?
-      pdf = Magick::ImageList.new("https:#{self.pdf_url}")
+      pdf = Magick::ImageList.new("http:#{self.pdf_url}")
       pdf.each_with_index do |page_img, i|
         page_img.write "#{Rails.root}/tmp/#{i}_pdf_page.jpg"
         slides.build(:image =>  File.new("#{Rails.root}/tmp/#{i}_pdf_page.jpg"))

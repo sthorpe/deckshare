@@ -1,6 +1,6 @@
 class UploadWorker
   include Sidekiq::Worker
-  sidekiq_options :queue => :default
+  #sidekiq_options :queue => :default
 
   def perform(deck_id)
     puts "Generating pdf images for #{deck_id}"

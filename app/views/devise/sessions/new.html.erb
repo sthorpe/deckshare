@@ -3,33 +3,37 @@
 
     <h4 class="form-element-title">Log in</h4>
 
-    <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: {class: 'epic-login-form padding-xs-30 padding-sm-20 padding-md-30'}) do |f| %>
+    <%= link_to "Sign in with Google", user_omniauth_authorize_path(:google_oauth2) %>
 
-      <div class="input-group epic-input-addon mb-20">
-        <span class="input-group-addon"><i class="euki-user"></i></span>
-        <%= f.email_field :email, class: 'form-control epic-form-input input-lg', placeholder: 'email', autofocus: true %>
-      </div>
+    <% if false %>
+      <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: {class: 'epic-login-form padding-xs-30 padding-sm-20 padding-md-30'}) do |f| %>
 
-      <div class="input-group epic-input-addon mb-20">
-        <span class="input-group-addon"><i class="euki-lock"></i></span>
-        <%= f.password_field :password, class: 'form-control epic-form-input input-lg', placeholder: 'password', autocomplete: "off" %>
-      </div>
-
-      <% if false && devise_mapping.rememberable? -%>
-        <div class="checkbox pull-right">
-          <label>
-          <%= f.check_box :remember_me %>
-          Remember me </label>
+        <div class="input-group epic-input-addon mb-20">
+          <span class="input-group-addon"><i class="euki-user"></i></span>
+          <%= f.email_field :email, class: 'form-control epic-form-input input-lg', placeholder: 'email', autofocus: true %>
         </div>
-      <% end -%>
 
-      <div class="actions">
-        <%= f.submit "Log in", class: "btn btn-block btn-lg form-btn btn-style" %>
-      </div>
+        <div class="input-group epic-input-addon mb-20">
+          <span class="input-group-addon"><i class="euki-lock"></i></span>
+          <%= f.password_field :password, class: 'form-control epic-form-input input-lg', placeholder: 'password', autocomplete: "off" %>
+        </div>
 
-      <div class="forgot-pass text-center pt-15">
-        <%= link_to "Forgot password?", new_password_path(resource_name) %>
-      </div>
+        <% if false && devise_mapping.rememberable? -%>
+          <div class="checkbox pull-right">
+            <label>
+            <%= f.check_box :remember_me %>
+            Remember me </label>
+          </div>
+        <% end -%>
+
+        <div class="actions">
+          <%= f.submit "Log in", class: "btn btn-block btn-lg form-btn btn-style" %>
+        </div>
+
+        <div class="forgot-pass text-center pt-15">
+          <%= link_to "Forgot password?", new_password_path(resource_name) %>
+        </div>
+      <% end %>
     <% end %>
   </div>
 </div>

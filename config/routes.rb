@@ -9,9 +9,10 @@ Rails.application.routes.draw do
   end
   mount PdfjsViewer::Rails::Engine => "/pdfjs", as: 'pdfjs'
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
-  devise_for :users, controllers: {
-    sessions: 'users/sessions'
-  }
+  # devise_for :users, controllers: {
+  #   sessions: 'users/sessions'
+  # }
+  devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
 
   devise_scope :user do
     get "/login" => "devise/sessions#new"

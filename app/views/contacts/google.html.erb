@@ -1,8 +1,5 @@
 <div class='contacts'>
   <h4>Contacts</h4>
-  <table>
-  <% @contacts.each do |contact| %>
-   <tr><td><%= contact.name %></td><td><%= contact.email %></td></tr>
-  <% end %>
-  </table>
+  <%= react_component("DogoApp", props: {contacts: @contacts}) %>
+
 </div>

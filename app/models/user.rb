@@ -42,8 +42,10 @@ class User < ApplicationRecord
 
     if data
       data.each do |contact|
-        contact = Contact.new(name: contact[:name], email: contact[:email]["address"], user_id: self.id)
-        contact.save
+        unless Contact.find_by_email(contact[:email]["address"])
+          contact = Contact.new(name: contact[:name], email: contact[:email]["address"], user_id: self.id)
+          contact.save
+        end
       end
     end
   end

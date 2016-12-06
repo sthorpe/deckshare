@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :contacts
   resources :slides
   resources :comments
   resources :messages
@@ -21,6 +22,7 @@ Rails.application.routes.draw do
   end
   resources :decks
 
+  get :google, to: 'contacts#google'
   post :annotations, to: 'slides#create_annotation'
   get :hello_world, to: 'hello_world#index'
   root to: "home#index"

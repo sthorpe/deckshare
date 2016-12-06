@@ -3,7 +3,7 @@
 
     <h4 class="form-element-title">Log in</h4>
 
-    <%= link_to "Sign in with Google", user_omniauth_authorize_path(:google_oauth2) %>
+    <%= link_to image_tag('google.png'), user_omniauth_authorize_path(:google_oauth2) %>
 
     <% if false %>
       <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: {class: 'epic-login-form padding-xs-30 padding-sm-20 padding-md-30'}) do |f| %>

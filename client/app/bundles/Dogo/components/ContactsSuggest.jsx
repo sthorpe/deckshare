@@ -1,34 +1,20 @@
 import React, { PropTypes } from 'react';
 import Autosuggest from 'react-autosuggest';
 
-// const names = [
-//   'Brian',
-//   'Caley',
-//   'Casey',
-//   'Caroline',
-//   'Chris',
-//   'David',
-//   'Misha'
-// ];
-
 // https://developer.mozilla.org/en/docs/Web/JavaScript/Guide/Regular_Expressions#Using_Special_Characters
 const escapeRegexCharacters = str => str.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
 
-// const getSuggestions = value => {
-//   const escapedValue = escapeRegexCharacters(value.trim());
-//
-//   if (escapedValue === '') {
-//     return [];
-//   }
-//
-//   const regex = new RegExp('^' + escapedValue, 'i');
-//
-//   return contacts.filter(name => regex.test(name));
-// }
-
 const getSuggestionValue = suggestion => suggestion;
 
-const renderSuggestion = suggestion => suggestion;
+//const renderSuggestion = suggestion => suggestion;
+function renderSuggestion(suggestion) {
+  return (
+    <div>
+      <div>{suggestion["name"]}</div>
+      <div>{suggestion["email"]}</div>
+    </div>
+  );
+}
 
 const renderInputComponent = inputProps => (
   <div className="inputContainer">
@@ -70,10 +56,10 @@ export default class ContactsSuggest extends React.Component {
 
     var contacts = [];
     $.each(this.props.contacts, function( index, value ) {
-      contacts.push(value["name"]);
+      contacts.push(value);
     });
 
-    return contacts.filter(name => regex.test(name));
+    return contacts.filter(contact => regex.test(contact["name"]));
   }
 
   onSuggestionsClearRequested = () => {

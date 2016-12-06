@@ -38,7 +38,9 @@ class User < ApplicationRecord
   def save_google_contacts(access_token)
     # Build contacts
     contacts_json = JSON.parse(open("https://www.google.com/m8/feeds/contacts/default/full?access_token="+access_token.credentials.token+"&alt=json").read)
-    data = contacts_json["feed"]["entry"].collect{|p| { name: p["title"]["$t"], email: p["gd$email"][0] }}
+    if contacts_json
+      data = contacts_json["feed"]["entry"].collect{|p| { name: p["title"]["$t"], email: p["gd$email"][0] }}
+    end
 
     if data
       data.each do |contact|

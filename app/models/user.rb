@@ -38,7 +38,7 @@ class User < ApplicationRecord
 
   def save_google_contacts(access_token)
     # Build contacts
-    contacts_json = JSON.parse(open("https://www.google.com/m8/feeds/contacts/#{self.email}/full?access_token="+access_token+"&alt=json&max-results=1000").read)
+    contacts_json = JSON.parse(open("https://www.google.com/m8/feeds/contacts/#{self.email}/full?access_token="+access_token+"&alt=json&max-results=2000").read)
 
     if !contacts_json.empty?
       data = contacts_json["feed"]["entry"].collect{|p| { name: p["title"]["$t"], email: p["gd$email"][0] } if p["gd$email"].present? }

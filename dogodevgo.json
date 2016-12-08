@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "dogodevelopment",
+  "private_key_id": "7a58cc9a8d9b7386eb7ab23b7c104a1adf1495fc",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQDM2TQeQUA6BuIN\nLqC/4Mxe/Z4yvFrsIfhMTWrfm1BETzBhYn4B4gVKupFNA7akMrcJgwnRkUGMGwEe\nj4QxS8pY/rPvPqbNthEcI/WuW1/qwF0OQE4PdgNje85LqgvJqejwO2BdElbeJHVN\nCPDazUMeglmIOiyDGUe6S1gUSaVM/AGNVujtSo33Y51NtsudAkSI8GMvQ5NH1vVN\nGHm9Vpb4feV+f+7KQE1mBF/G69WN+Ha8GrvkQpA51vid5SUEDeUvE6XL/ZRdN6os\n/l3l/TIaQsOxHSXCkLVbPnAgSMGYqfPPmM04/Xo6f+inr7LImYBAoxSo7TL4dAL8\nLN9HBeAdAgMBAAECggEASq0HrdvVoRGvSGTuHuTBPAOyrwYxExHTJWW3hypkWXKQ\nzX+NNfyCN1rJ60xmQXdneGU3qBkOzxdtEgn5g8sASe8YAyhQwH8Vv69wOY5/6eEU\nS0Sv8DzyQUr5ymWEBJEXJLRQjb1Iw5SA2oNe4jSfujiEkP+8CFKn7kbXJhYu12AD\nt+86HePHqrRTMVNodzcYIc/CERPPu6qH+E9RbbHRAbT9HHiR0kG/fmqUcHibGvgo\nTWSK/R8i9Y+eX82KKoGhImOTv4XD/VTfWMWAI+0EdwSMGxkLYObvi1S6rcw/3Pvm\n6x6WjvxjUPaPGBNUj9NzH3ZMqUokcApjj5Q9prge1QKBgQDw10R5gMSWAVzXqjln\nEJuFBnQAa9YtBKGlkYKy5O0J4AHhodCLb4ustFHEll9CbqeOGOmpa9hDNb71cNRw\n0mmVa8AYej470tJeGl8HiTwbaAtr522MvzHX3rl/VNeEk8EIHs6Z5Y6k0sxlt1gP\nX3ryhZj0KJKfP5kJ1mWVBcwY+wKBgQDZvfsCz+NAFKwh041nWWPv27lurjvVFgpQ\nkfws3avA8QfXZjLJfqZAGrfFxZaTnqo6lRpJikFCoBeVoPEYD3DRSivULcKF2A/Y\niHtja3Q5MD0z8Cm/VO6rvjOL/Wtet2XMVljV8kRSmWk18/3hP0PgLOKr+f8SLrcU\nxaSELqtPxwKBgEDUIUl3gPND8KLY3lTA4qv/HbCTVnaNvZlcvsq61peG5dq/fOxb\nnURi0XPSalfug0m7qQIC1pbY28sjkPvBl8wx0eaE2UWvLRNJk/TqWvShoBlulU2C\nlb8e493Dj7PPNfGioUhJw4jYeU6T+K9Cq0ym65IlbbpSGzbLsFJZ2iOLAoGAH45z\nBHNQggb882IPijzgSPDVLP8/WKB7GjYuD+qIa8wC0OrUzXL3cS7uF1GNgxNppFfb\nmXDaCGffQyYyCsSiGxLeyz9eg7tOgJk3GK+IBonBNPfHdR1AAc/s9IrjtrRponWZ\nJliYIkhtgQ49axmaIrEeoMH4f5AZpH8IWsfQuB0CgYEA0TuApXU+z09sonzPMA4x\n/z10FfhIXXg4STaGG7K89gGIBmKV365ql5Oj3j/oPDOEvAZ5s6TMAnZ9ZXpuqnyP\nmLe7EFoeQWYGHeBH7Le0yZnC0fKDMTNX+Pu9JepVzRx3stNEJMuxMqdLF0cLPRGr\nlwD6x+5eutAfORB4dz8DbWs=\n-----END PRIVATE KEY-----\n",
+  "client_email": "dogodevelopment@appspot.gserviceaccount.com",
+  "client_id": "106333504726279261117",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://accounts.google.com/o/oauth2/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/dogodevelopment%40appspot.gserviceaccount.com"
+}

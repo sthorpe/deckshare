@@ -64,6 +64,7 @@ class ContactsController < ApplicationController
 
   def google
     @contacts = current_user.contacts
+    @ga_portals = current_user.collect_google_analytics_websites.data.items
   end
 
   private

@@ -38,7 +38,9 @@ gem 'jquery-fileupload-rails', '~> 0.4.1'
 gem 'font-awesome-rails'
 gem 'bugsnag'
 gem 'omniauth-google-oauth2'
-gem 'google-api-client', '~> 0.9'
+#gem 'google-api-client', '~> 0.9', require: 'google/apis/analytics_v3'
+gem 'google-api-client', '0.8.2', require: 'google/api_client'
+gem 'rest-client'
 
 group :development, :test do
   gem 'byebug'

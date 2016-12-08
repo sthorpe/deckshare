@@ -2,6 +2,11 @@
   <h4>Contacts</h4>
   <%= react_component("DogoApp", props: {contacts: @contacts}) %>
   <h4>Analtyics</h4>
-  <%= select_tag(:portal, options_for_select(@ga_portals.collect {|x| x.name}.reverse)) %>
+  <label class="pt-label .modifier">
+    Select your website:
+    <div style="width:20%;" class="pt-select">
+      <%= select_tag(:portal, options_for_select(@ga_portals.collect {|x| x.name}.reverse)) %>
+    </div>
+  </label>
   <h4>Calendar Appointments</h4>
 </div>

@@ -65,6 +65,32 @@ class User < ApplicationRecord
   end
 
   def collect_google_analytics_websites
+    @client = self.connect_google
+    @service = @client.discovered_api('analytics', 'v3')
+    @response = @client.execute(
+      api_method: @service.management.profiles.list,
+      parameters: {
+        accountId: "~all",
+        webPropertyId: "~all"
+      }
+    )
+    return @response
+  end
+
+  def collect_google_analytics_views(website)
+    @client = self.connect_google
+    @service = @client.discovered_api('analytics', 'v3')
+    @response = @client.execute(
+      api_method: @service.management.profiles.list,
+      parameters: {
+        accountId: "~all",
+        webPropertyId: "~all"
+      }
+    )
+    return @response
+  end
+
+  def connect_google
     @client = Google::APIClient.new(
       :application_name => 'dogo',
       :application_version => '1.0.0'
@@ -74,17 +100,7 @@ class User < ApplicationRecord
     @client.authorization.client_id = "850968458455-4atj8klv44clc52i7j4gdq6261lbavhh.apps.googleusercontent.com"
     @client.authorization.client_secret = "JlwdMr4mAJ2BHuXQR6AERDPK"
     @client.authorization.refresh!
-    @service = @client.discovered_api('analytics', 'v3')
-    #@response = @client.execute(api_method: @service.management.accounts)
-    #@response = @client.execute(api_method: @service.management.profiles.list)
-    @response = @client.execute(
-      api_method: @service.management.profiles.list,
-      parameters: {
-        accountId: "~all",
-        webPropertyId: "~all"
-      }
-    )
-    return @response
+    return @client
   end
 
   def save_google_contacts(access_token)

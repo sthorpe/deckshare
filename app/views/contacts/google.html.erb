@@ -5,7 +5,7 @@
   <label class="pt-label .modifier">
     Select your website:
     <div style="width:20%;" class="pt-select">
-      <%= select_tag(:portal, options_for_select(@ga_portals.collect {|x| x.name}.reverse)) %>
+      <%= select_tag(:portal, options_for_select(@ga_portals.collect {|x| x.name if x.name.present? && !x.name.include?('Raw Data') }.reverse)) %>
     </div>
   </label>
   <h4>Calendar Appointments</h4>

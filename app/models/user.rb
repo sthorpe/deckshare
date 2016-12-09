@@ -31,7 +31,8 @@ class User < ApplicationRecord
     user.save!
 
     if user
-      user.save_google_contacts(access_token.credentials.token)
+      user.save_google_contacts(user.oauth_token, max_results: '100')
+      SaveGoogleContactsWorker.perform_async(user.id)
     end
 
     user
@@ -103,9 +104,9 @@ class User < ApplicationRecord
     return @client
   end
 
-  def save_google_contacts(access_token)
+  def save_google_contacts(access_token, opts={})
     # Build contacts
-    contacts_json = JSON.parse(open("https://www.google.com/m8/feeds/contacts/#{self.email}/full?access_token="+access_token+"&alt=json&max-results=2000").read)
+    contacts_json = JSON.parse(open("https://www.google.com/m8/feeds/contacts/#{self.email}/full?access_token="+access_token+"&alt=json&max-results=#{opts[:max_results]}").read)
 
     if !contacts_json.empty?
       data = contacts_json["feed"]["entry"].collect{|p| { name: p["title"]["$t"], email: p["gd$email"][0] } if p["gd$email"].present? }

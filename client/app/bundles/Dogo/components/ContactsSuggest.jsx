@@ -59,7 +59,7 @@ export default class ContactsSuggest extends React.Component {
       contacts.push(value);
     });
 
-    return contacts.filter(contact => regex.test(contact["email"]));
+    return contacts.filter(contact => regex.test(contact["name"]));
   }
 
   onSuggestionsClearRequested = () => {

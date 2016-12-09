@@ -31,18 +31,11 @@ class User < ApplicationRecord
     user.save!
 
     if user
-      user.save_google_contacts(user.oauth_token, max_results: '100')
+      user.save_google_contacts(user.oauth_token, max_results: '100', user_id: user.id, email: user.email)
       SaveGoogleContactsWorker.perform_async(user.id)
     end
 
     user
-  end
-
-  def analytics
-    service = Google::Apis::AnalyticsV3::AnalyticsService.new
-    service.authorization = client
-    @account_summaries = service.list_account_summaries
-    puts @account_summaries
   end
 
   def token_update
@@ -78,19 +71,6 @@ class User < ApplicationRecord
     return @response
   end
 
-  def collect_google_analytics_views(website)
-    @client = self.connect_google
-    @service = @client.discovered_api('analytics', 'v3')
-    @response = @client.execute(
-      api_method: @service.management.profiles.list,
-      parameters: {
-        accountId: "~all",
-        webPropertyId: "~all"
-      }
-    )
-    return @response
-  end
-
   def connect_google
     @client = Google::APIClient.new(
       :application_name => 'dogo',
@@ -106,7 +86,7 @@ class User < ApplicationRecord
 
   def save_google_contacts(access_token, opts={})
     # Build contacts
-    contacts_json = JSON.parse(open("https://www.google.com/m8/feeds/contacts/#{self.email}/full?access_token="+access_token+"&alt=json&max-results=#{opts[:max_results]}").read)
+    contacts_json = JSON.parse(open("https://www.google.com/m8/feeds/contacts/#{opts[:email]}/full?access_token="+access_token+"&alt=json&max-results=#{opts[:max_results]}").read)
 
     if !contacts_json.empty?
       data = contacts_json["feed"]["entry"].collect{|p| { name: p["title"]["$t"], email: p["gd$email"][0] } if p["gd$email"].present? }
@@ -116,7 +96,7 @@ class User < ApplicationRecord
       data.each do |contact|
         if contact.present? && contact[:email].present?
           unless Contact.find_by_email(contact[:email]["address"])
-            contact = Contact.new(name: contact[:name], email: contact[:email]["address"], user_id: self.id)
+            contact = Contact.new(name: contact[:name], email: contact[:email]["address"], user_id: opts[:user_id])
             contact.save
           end
         end

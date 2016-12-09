@@ -95,7 +95,7 @@ class User < ApplicationRecord
     if data
       data.each do |contact|
         if contact.present? && contact[:email].present?
-          unless Contact.find_by_email(contact[:email]["address"])
+          unless Contact.where(email: contact[:email]["address"]) && Contact.where(user_id: opts[:user_id])
             contact = Contact.new(name: contact[:name], email: contact[:email]["address"], user_id: opts[:user_id])
             contact.save
           end

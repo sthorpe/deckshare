@@ -16,7 +16,6 @@
 //= require bootstrap-sprockets
 //= require jquery_ujs
 //= require jquery-fileupload/basic
-//= require turbolinks
 //= require action_cable
 //= require_self
 //= require_tree ./cable
@@ -25,3 +24,31 @@
 
 this.App = {};
 App.cable = ActionCable.createConsumer();
+
+App.websiteSelect = function(){
+  $('.website-select').on('change', function(){
+    this
+    debugger
+    var strWeb = this.options[this.selectedIndex].text;
+    data = { accountId: '', webPropertyId: ''};
+    path = 'google_analytics_website_stats';
+    App.ajaxController(data, path, 'POST');
+  })
+}
+
+App.ajaxController = function(data, path, httpmethod){
+  function build_url(path){
+    return '/'+path;
+  }
+
+  function callback_receiving_data(){
+  }
+  $.ajax({
+     url: build_url(),
+     method: httpmethod,
+     data: data,
+     success: function(){
+       callback_receiving_data();
+     }
+  })
+}

@@ -10,7 +10,6 @@ gem 'bootstrap-sass'
 gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.1.0'
 gem 'jquery-rails'
-gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'devise', :git => 'git://github.com/twalpole/devise.git'
@@ -41,6 +40,7 @@ gem 'omniauth-google-oauth2'
 #gem 'google-api-client', '~> 0.9', require: 'google/apis/analytics_v3'
 gem 'google-api-client', '0.8.2', require: 'google/api_client'
 gem 'rest-client'
+gem 'clearbit'
 
 group :development, :test do
   gem 'byebug'

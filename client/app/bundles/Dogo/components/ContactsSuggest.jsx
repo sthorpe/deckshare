@@ -12,6 +12,9 @@ function renderSuggestion(suggestion) {
     <div>
       <div>{suggestion["name"]}</div>
       <div>{suggestion["email"]}</div>
+      <div>{suggestion["bio"]}</div>
+      <div>{suggestion["location"]}</div>
+      <div>{suggestion["site"]}</div>
     </div>
   );
 }

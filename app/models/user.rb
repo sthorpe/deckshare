@@ -53,9 +53,9 @@ class User < ApplicationRecord
       puts "Error, no token with refresh #{self.oauth_token}"
     end
   rescue RestClient::BadRequest => e
-    puts "Bad request #{e}"
+    Bugsnag.notify("Bad request #{e}")
   rescue
-    puts "Something else bad happened :("
+    Bugsnag.notify("#{data} is invalid!")
   end
 
   def collect_google_analytics_websites
@@ -66,6 +66,19 @@ class User < ApplicationRecord
       parameters: {
         accountId: "~all",
         webPropertyId: "~all"
+      }
+    )
+    return @response
+  end
+
+  def collect_google_analytics_website_views(accountId, webPropertyId)
+    @client = self.connect_google
+    @service = @client.discovered_api('analytics', 'v3')
+    @response = @client.execute(
+      api_method: @service.management.profiles.list,
+      parameters: {
+        accountId: accountId,
+        webPropertyId: webPropertyId
       }
     )
     return @response
@@ -94,8 +107,8 @@ class User < ApplicationRecord
 
     if data
       data.each do |contact|
-        if contact.present? && contact[:email].present?
-          unless Contact.where(email: contact[:email]["address"]) && Contact.where(user_id: opts[:user_id])
+        if contact.present? && contact[:email].present?          
+          unless Contact.where(email: contact[:email]["address"], user_id: opts[:user_id]).take
             contact = Contact.new(name: contact[:name], email: contact[:email]["address"], user_id: opts[:user_id])
             contact.save
           end

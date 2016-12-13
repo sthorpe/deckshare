@@ -65,6 +65,14 @@ class ContactsController < ApplicationController
   def google
     @contacts = current_user.contacts
     @ga_portals = current_user.collect_google_analytics_websites.data.items
+    Clearbit.key = 'sk_8152ae059fd7e013e5291314295331f2'
+    @result = Clearbit::Enrichment.find(email: 'scott@mogotix.com', stream: true)
+  end
+
+  def google_analytics_website_stats
+    user = User.where(id: params[:id])
+    @stats = user.collect_google_analytics_website_views(params[:accountId], params[:webPropertyId])
+    render :json => @stats
   end
 
   private

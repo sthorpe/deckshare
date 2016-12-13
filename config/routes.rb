@@ -22,6 +22,7 @@ Rails.application.routes.draw do
   end
   resources :decks
 
+  post :google_analytics_website_stats, to: 'contacts#google_analytics_website_stats'
   get :google, to: 'contacts#google'
   post :annotations, to: 'slides#create_annotation'
   get :hello_world, to: 'hello_world#index'

@@ -11,6 +11,8 @@ class User < ApplicationRecord
   has_many :shares, :through => :decks
   has_many :contacts
 
+  serialize(:raw_clearbit_data, JSON)
+
   def self.from_omniauth(access_token)
     data = access_token.info
     user = User.where(:email => data["email"]).first
@@ -97,6 +99,25 @@ class User < ApplicationRecord
     return @client
   end
 
+  def collect_information_from_clearbit
+    if self.email
+      #Clearbit.key = 'sk_8152ae059fd7e013e5291314295331f2'
+      Clearbit.key = 'sk_57501e4b49ad381a7f8d12c1b180cdd5'
+      @result = Clearbit::Enrichment.find(email: self.email, stream: true)
+      self.raw_clearbit_data = @result
+      update_user_fields_with_clearbit_data(@result)
+      save
+    end
+  end
+
+  def update_user_fields_with_clearbit_data(data)
+    self.first_name = self.raw_clearbit_data["person"]["name"]["givenName"]
+    self.last_name = self.raw_clearbit_data["person"]["name"]["familyName"]
+    self.company = self.raw_clearbit_data["person"]["employment"]["name"]
+    self.location = self.raw_clearbit_data["person"]["location"]
+    self.avatar_url = self.raw_clearbit_data["person"]["gravatar"]["avatar"]
+  end
+
   def save_google_contacts(access_token, opts={})
     # Build contacts
     contacts_json = JSON.parse(open("https://www.google.com/m8/feeds/contacts/#{opts[:email]}/full?access_token="+access_token+"&alt=json&max-results=#{opts[:max_results]}").read)
@@ -107,7 +128,7 @@ class User < ApplicationRecord
 
     if data
       data.each do |contact|
-        if contact.present? && contact[:email].present?          
+        if contact.present? && contact[:email].present?
           unless Contact.where(email: contact[:email]["address"], user_id: opts[:user_id]).take
             contact = Contact.new(name: contact[:name], email: contact[:email]["address"], user_id: opts[:user_id])
             contact.save

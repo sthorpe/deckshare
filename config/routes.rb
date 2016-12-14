@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :questions
   resources :contacts
   resources :slides
   resources :comments
@@ -26,6 +27,7 @@ Rails.application.routes.draw do
   get :google, to: 'contacts#google'
   post :annotations, to: 'slides#create_annotation'
   get :hello_world, to: 'hello_world#index'
+  get :answer_questions, to: 'questions#answer_questions'
   get :signup, to: 'home#signup'
   root to: "home#index"
 end

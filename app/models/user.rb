@@ -10,6 +10,7 @@ class User < ApplicationRecord
   has_many :decks
   has_many :shares, :through => :decks
   has_many :contacts
+  has_many :questions
 
   serialize(:raw_clearbit_data, JSON)
 

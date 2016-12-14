@@ -6,7 +6,7 @@
   Current Questions:
   <% @questions.each_with_index do |question,idx| %>
     <p><%= idx+1 %>. <%= question.description %></p>
-    <h5>Add an Answer
+    <h5>
       <%= form_for @answer, url: question_answers_path(question) do |f| %>
         <%= f.text_area :body %>
         <%= f.hidden_field :user_id, value: current_user.id %>

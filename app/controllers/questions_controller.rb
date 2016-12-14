@@ -64,6 +64,7 @@ class QuestionsController < ApplicationController
   end
 
   def answer_questions
+    @answer = Answer.new
     @questions = User.where(email: 'sthorpe@gmail.com').take.questions
   end
 

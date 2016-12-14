@@ -14,11 +14,12 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   def after_sign_in_path_for(resource)
     stored_location_for(resource) ||
       if resource.is_a?(User)
-        if resource.admin?
-          new_question_path
-        else
-          answer_questions_path
-        end
+        answer_questions_path
+        # if resource.admin?
+        #   new_question_path
+        # else
+        #   answer_questions_path
+        # end
       else
         super
       end

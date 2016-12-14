@@ -2,15 +2,10 @@
 </div>
 <div class="col-md-6">
 <center>
-<h1>Create a question</h1>
-<%= render 'form', question: @question %>
-<br />
-<br />
-<br />
 <% if @questions.present? %>
   Current Questions:
   <% @questions.each_with_index do |question,idx| %>
-    <p><%= idx %>. <%= question.description %><%= link_to ' [Delete]', question, method: :delete, data: { confirm: 'Are you sure?' } %></p>
+    <p><%= idx+1 %>. <%= question.description %></p>
   <% end %>
 <% end %>
 </center>

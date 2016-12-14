@@ -18,7 +18,7 @@ Rails.application.routes.draw do
   devise_scope :user do
     get "/login" => "devise/sessions#new"
     get "/logout" => "devise/sessions#destroy"
-    get "/signup" => "devise/registrations#new"
+    #get "/signup" => "devise/registrations#new"
   end
   resources :decks
 
@@ -26,5 +26,6 @@ Rails.application.routes.draw do
   get :google, to: 'contacts#google'
   post :annotations, to: 'slides#create_annotation'
   get :hello_world, to: 'hello_world#index'
+  get :signup, to: 'home#signup'
   root to: "home#index"
 end

@@ -1,7 +1,6 @@
 <div class='contacts'>
   <h4>Contacts</h4>
   <%= react_component("DogoApp", props: {contacts: @contacts}) %>
-  <%= @result.inspect %>
   <h4>Analtyics</h4>
   <label class="pt-label .modifier">
     Select your website:
@@ -10,4 +9,14 @@
     </div>
   </label>
   <h4>Calendar Appointments</h4>
+</div>
+<div class='clearbit'>
+  <h4>Enrichment API</h4>
+    <%= @enrichment.inspect %>
+  <h4>Discovery API </h4>
+    <%= @discovery.inspect %>
+  <h4>Prospector API </h4>
+    <%= @prospector.inspect %>
+  <h4>Reveal API </h4>
+    <%= @reveal.inspect %>
 </div>

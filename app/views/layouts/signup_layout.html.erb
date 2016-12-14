@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>dogo</title>
+  <%= stylesheet_link_tag    'application', media: 'all' %>
+  <%= javascript_include_tag 'application' %>
+  <link href="https://fonts.googleapis.com/css?family=Bree+Serif" rel="stylesheet">
+  <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+  <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+  <![endif]-->
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+  <% if alert %>
+    <p class="alert pt-callout pt-intent-primary pt-icon-info-sign"><%= alert %></p>
+  <% end %>
+  <div class="container-fluid">
+    <div class="row">
+      <%= yield %>
+    </div>
+  </div>
+
+</body>
+</html>

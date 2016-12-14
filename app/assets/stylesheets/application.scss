@@ -105,3 +105,9 @@ h3 {
   outline: none;
   padding: 10px 15px;
 }
+.alt-grid [class*="col-"] {padding-left:0;padding-right:0}
+.alt-grid .row {margin-left:0;margin-right:0}
+.alt-grid .container {width:100%;max-width:none;padding:0;}
+.full-height {
+  height:100%;
+}

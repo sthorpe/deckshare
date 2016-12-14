@@ -1,11 +1,13 @@
 <div class="col-xs-12 col-sm-12">
   <!-- copy main element to have full width container -->
   <header class="header-element header-element-bg epic-header-1" style="background-image: url('images/header-img/header-1.png');">
-    <div class="container-fluid element-content text-center">
-      <div class="header-info">
-        <h2 class="color-white">Demystify the Fundraising Process</h2>
-        <p class="color-white">Get content and tools to help you raise money for your startup.</p>
-        <%= link_to 'Sign in with Google to request early access', user_omniauth_authorize_path(:google_oauth2, :signup => true), class: 'btn btn-primary signup-text' %>
+    <div class="container-fluid element-content">
+      <div class="header-info center-div">
+        <h2 class="color-black spacing">Demystify the Fundraising Process</h2>
+        <div class="signup-wrapper">
+          <div class="color-black spacing">Get content and tools to help you raise money for your startup.</div>
+          <%= link_to 'Sign in with Google to request early access', user_omniauth_authorize_path(:google_oauth2, :signup => true), class: 'btn btn-primary signup-text' %>
+        </div>
       </div>
     </div>
   </header>

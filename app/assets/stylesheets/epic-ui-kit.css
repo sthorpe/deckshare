@@ -10786,7 +10786,8 @@ input[type="radio"] .styled:checked + label::after {
 .epic-header-1 .element-content {
   background-color: rgba(12, 17, 30, 0.45); }
   .epic-header-1 .element-content .header-info {
-    padding-bottom: 20px; }
+    padding: 231px 0;
+    margin-bottom: 100%; }
     .epic-header-1 .element-content .header-info p {
       padding-bottom: 10px; }
     .epic-header-1 .element-content .header-info button {
@@ -10798,14 +10799,14 @@ input[type="radio"] .styled:checked + label::after {
 /* Small devices (tablets, 768px and up) */
 @media (min-width: 768px) {
   .epic-header-1 .element-content .header-info {
-    padding: 565px 0; }
+    padding: 331px 0; }
     .epic-header-1 .element-content .header-info p {
       padding-bottom: 10px; } }
 /* Medium devices (desktops, 992px and up) */
 @media (min-width: 992px) {
   .epic-header-1 .element-content .header-info {
-    padding: 535px 0;
-    margin-bottom: 20px; }
+    padding: 331px 0;
+    margin-bottom: 100%; }
     .epic-header-1 .element-content .header-info h2 {
       font-size: 48px; }
     .epic-header-1 .element-content .header-info p {

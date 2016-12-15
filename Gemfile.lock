@@ -186,6 +186,9 @@ GEM
     excon (0.54.0)
     execjs (2.7.0)
     extlib (0.9.16)
+    facebook-messenger (0.11.1)
+      httparty (~> 0.13, >= 0.13.7)
+      rack (>= 1.6.4)
     factory_girl (4.4.0)
       activesupport (>= 3.0.0)
     factory_girl_rails (4.4.1)
@@ -366,6 +369,8 @@ GEM
     hirb (0.7.3)
     http-cookie (1.0.3)
       domain_name (~> 0.5)
+    httparty (0.14.0)
+      multi_xml (>= 0.5.2)
     i18n (0.7.0)
     inflecto (0.0.2)
     ipaddress (0.8.3)
@@ -692,6 +697,7 @@ DEPENDENCIES
   compass-rails!
   database_cleaner
   devise!
+  facebook-messenger
   factory_girl_rails
   faker
   fixture_builder

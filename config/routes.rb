@@ -13,9 +13,7 @@ Rails.application.routes.draw do
   end
   mount PdfjsViewer::Rails::Engine => "/pdfjs", as: 'pdfjs'
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
-  # devise_for :users, controllers: {
-  #   sessions: 'users/sessions'
-  # }
+
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
 
   devise_scope :user do
@@ -30,6 +28,7 @@ Rails.application.routes.draw do
   post :annotations, to: 'slides#create_annotation'
   get :hello_world, to: 'hello_world#index'
   get :answer_questions, to: 'questions#answer_questions'
+  get :webhook, to: 'webhook#bot' 
   get :signup, to: 'home#signup'
   root to: "home#index"
 end

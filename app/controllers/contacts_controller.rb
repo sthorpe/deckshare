@@ -65,11 +65,11 @@ class ContactsController < ApplicationController
   def google
     @contacts = current_user.contacts
     @ga_portals = current_user.collect_google_analytics_websites.data.items
-    Clearbit.key = 'sk_8152ae059fd7e013e5291314295331f2'
-    @enrichment = Clearbit::Enrichment.find(email: 'scott@mogotix.com', stream: true)
-    @discovery = Clearbit::Discovery.search(query: {tech: 'marketo', raised: '100000~'}, sort: 'alexa_asc')
-    @prospector = Clearbit::Prospector.search(domain: 'twitter.com', role: 'marketing')
-    @reveal = Clearbit::Reveal.find(ip: '73.70.233.1')
+    # Clearbit.key = 'sk_8152ae059fd7e013e5291314295331f2'
+    # @enrichment = Clearbit::Enrichment.find(email: 'scott@mogotix.com', stream: true)
+    # @discovery = Clearbit::Discovery.search(query: {tech: 'marketo', raised: '100000~'}, sort: 'alexa_asc')
+    # @prospector = Clearbit::Prospector.search(domain: 'twitter.com', role: 'marketing')
+    # @reveal = Clearbit::Reveal.find(ip: '73.70.233.1')
   end
 
   def google_analytics_website_stats

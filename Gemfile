@@ -40,7 +40,7 @@ gem 'omniauth-google-oauth2'
 gem 'google-api-client', '0.8.2', require: 'google/api_client'
 gem 'rest-client'
 gem 'clearbit'
-gem 'facebook-messenger'
+gem 'facebook-messenger', '0.8.0'
 
 group :development, :test do
   gem 'byebug'

@@ -1,7 +1,6 @@
 class WebhookController < ApplicationController
 
   def bot
-    raise "#{params.inspect}"
-    render :json => params.inspect
+    render :json => "#{params["hub.challenge"]}"
   end
 end

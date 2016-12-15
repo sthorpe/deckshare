@@ -11,12 +11,34 @@
   <h4>Calendar Appointments</h4>
 </div>
 <div class='clearbit'>
-  <h4>Enrichment API</h4>
-    <%= @enrichment.inspect %>
-  <h4>Discovery API </h4>
-    <%= @discovery.inspect %>
-  <h4>Prospector API </h4>
-    <%= @prospector.inspect %>
-  <h4>Reveal API </h4>
-    <%= @reveal.inspect %>
+
 </div>
+<div class="fb-messenger-checkbox"
+  origin=https://dogo-staging.herokuapp.com
+  page_id=1853353121565048
+  messenger_app_id=230502080710202
+  user_ref="UNIQUE_REF_PARAM"
+  prechecked="true"
+  allow_login="true"
+  size="large">
+</div>
+
+<script>
+window.fbAsyncInit = function() {
+   FB.init({
+     appId      : '230502080710202',
+     xfbml      : true,
+     version    : 'v2.6'
+   });
+
+ };
+
+ (function(d, s, id){
+   var js, fjs = d.getElementsByTagName(s)[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement(s); js.id = id;
+     js.src = "//connect.facebook.net/en_US/sdk.js";
+     fjs.parentNode.insertBefore(js, fjs);
+   }(document, 'script', 'facebook-jssdk')
+ );
+</script>

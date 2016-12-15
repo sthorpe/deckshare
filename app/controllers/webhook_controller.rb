@@ -1,6 +1,6 @@
 class WebhookController < ApplicationController
 
   def bot
-    render :json => '839534069'
+    render :json => params.inspect
   end
 end

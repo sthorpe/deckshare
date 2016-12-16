@@ -15,21 +15,3 @@ unless Rails.env.production?
   end
   bot_files.each { |file| require_dependency file }
 end
-
-Facebook::Messenger::Subscriptions.subscribe
-Bot.on :message do |message|
-  Bot.deliver(
-    recipient: message.sender,
-    message: {
-      text: message.text
-    }
-  )
-end
-Bot.on :optin do |optin|
-  optin.sender    # => { 'id' => '1008372609250235' }
-  optin.recipient # => { 'id' => '2015573629214912' }
-  optin.sent_at   # => 2016-04-22 21:30:36 +0200
-  optin.ref       # => 'CONTACT_SKYNET'
-
-  optin.reply(text: 'Ah, human!')
-end

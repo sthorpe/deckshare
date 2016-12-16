@@ -63,13 +63,33 @@ class ContactsController < ApplicationController
   end
 
   def google
+    require "facebook/messenger"
+    include Facebook::Messenger
     @contacts = current_user.contacts
     @ga_portals = current_user.collect_google_analytics_websites.data.items
     @param = (0...8).map { (65 + rand(26)).chr }.join
+    Facebook::Messenger::Subscriptions.subscribe
+    Bot.on :message do |message|
+      Bot.deliver(
+        recipient: message.sender,
+        message: {
+          text: message.text
+        }
+      )
+    end
+    Bot.on :optin do |optin|
+      Bot.deliver({
+        recipient: {
+          id: @param
+        },
+        message: {
+          text: 'Hello, world'
+        }
+      }, access_token: 'EAADRoZCKkBjoBAAADzh8MzWYuI1tyQNrxYd81cDZCIHWWGWqUx1LGOBgyb880tPMdQWF1KZB3fVJMpMLbnWYgMos43EJRHxKDCistFxuBSYYDzd1IcR9q5lRzL6ZBcOfcJk3U4ZCZClVcDz4hKZBWPn5ZA58lDXCemiycRUV6tF1jgZDZD')
   end
 
   def send_message_to_fb_user
-    
+
   end
 
   def google_analytics_website_stats

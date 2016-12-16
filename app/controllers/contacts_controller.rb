@@ -1,4 +1,6 @@
+require "facebook/messenger"
 class ContactsController < ApplicationController
+  include Facebook::Messenger
   before_action :authenticate_user!
   before_action :set_contact, only: [:show, :edit, :update, :destroy]
 
@@ -63,8 +65,6 @@ class ContactsController < ApplicationController
   end
 
   def google
-    require "facebook/messenger"
-    include Facebook::Messenger
     @contacts = current_user.contacts
     @ga_portals = current_user.collect_google_analytics_websites.data.items
     @param = (0...8).map { (65 + rand(26)).chr }.join

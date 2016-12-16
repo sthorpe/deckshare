@@ -57,7 +57,7 @@ window.fbAsyncInit = function() {
   origin=https://dogo-staging.herokuapp.com
   page_id=1853353121565048
   messenger_app_id=230502080710202
-  user_ref="UNIQUE_REF_PARAM"
+  user_ref="<%= (0...8).map { (65 + rand(26)).chr }.join %>"
   prechecked="true"
   allow_login="true"
   size="medium">

@@ -25,3 +25,20 @@ Bot.on :message do |message|
     }
   )
 end
+Bot.on :optin do |optin|
+Bot.deliver(
+    recipient: optin.sender,
+    message: {
+      text: 'Ah, human!'
+    }
+  )
+end
+Bot.on :delivery do |delivery|
+ puts "Human was online at #{delivery.at}"
+end
+Facebook::Messenger::Thread.set(
+  setting_type: 'greeting',
+  greeting: {
+    text: 'Welcome to your new bot overlord!'
+  }
+)

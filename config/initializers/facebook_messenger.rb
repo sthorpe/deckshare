@@ -25,13 +25,11 @@ Bot.on :message do |message|
     }
   )
 end
-Bot.on :postback do |postback|
-  postback.sender    # => { 'id' => '1008372609250235' }
-  postback.recipient # => { 'id' => '2015573629214912' }
-  postback.sent_at   # => 2016-04-22 21:30:36 +0200
-  postback.payload   # => 'EXTERMINATE'
+Bot.on :optin do |optin|
+  optin.sender    # => { 'id' => '1008372609250235' }
+  optin.recipient # => { 'id' => '2015573629214912' }
+  optin.sent_at   # => 2016-04-22 21:30:36 +0200
+  optin.ref       # => 'CONTACT_SKYNET'
 
-  if postback.payload == 'Hello, world'
-    puts "Human #{postback.recipient} marked for extermination"
-  end
+  optin.reply(text: 'Ah, human!')
 end

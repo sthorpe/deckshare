@@ -1,7 +1,7 @@
 require "facebook/messenger"
 class ContactsController < ApplicationController
   include Facebook::Messenger
-  before_action :authenticate_user!
+  #before_action :authenticate_user!
   before_action :set_contact, only: [:show, :edit, :update, :destroy]
 
   # GET /contacts
@@ -65,10 +65,15 @@ class ContactsController < ApplicationController
   end
 
   def google
-    @contacts = current_user.contacts
+    if Rails.env.production?
+      @contacts = current_user.contacts
+    else
+      current_user = User.where(email: 'sthorpe@gmail.com').take
+      @contacts = current_user.contacts
+    end
     @ga_portals = current_user.collect_google_analytics_websites.data.items
     @param = (0...8).map { (65 + rand(26)).chr }.join
-    Facebook::Messenger::Subscriptions.subscribe
+    Facebook::Messenger::Subscriptions.subscribe(access_token: ENV['ACCESS_TOKEN'])
     Bot.on :message do |message|
       Bot.deliver(
         recipient: message.sender,
@@ -77,13 +82,47 @@ class ContactsController < ApplicationController
         }
       )
     end
+    # Bot.on :optin do |optin|
+    #   raise "#{optin.inspect}"
+    #   optin.sender    # => { 'id' => '1008372609250235' }
+    #   optin.recipient # => { 'id' => '2015573629214912' }
+    #   optin.sent_at    = Time.now
+    #   optin.ref        = 'CONTACT_SKYNET'
+    #
+    #   optin.reply(text: 'Ah, human!')
+    # end
+
     Bot.on :optin do |optin|
-      Bot.deliver({recipient: {id: @param}, message: { text: 'CATS ON FIRE'}, access_token: 'EAADRoZCKkBjoBAAADzh8MzWYuI1tyQNrxYd81cDZCIHWWGWqUx1LGOBgyb880tPMdQWF1KZB3fVJMpMLbnWYgMos43EJRHxKDCistFxuBSYYDzd1IcR9q5lRzL6ZBcOfcJk3U4ZCZClVcDz4hKZBWPn5ZA58lDXCemiycRUV6tF1jgZDZD'})
+      url = 'https://graph.facebook.com/me/messages?access_token=EAADRoZCKkBjoBAAADzh8MzWYuI1tyQNrxYd81cDZCIHWWGWqUx1LGOBgyb880tPMdQWF1KZB3fVJMpMLbnWYgMos43EJRHxKDCistFxuBSYYDzd1IcR9q5lRzL6ZBcOfcJk3U4ZCZClVcDz4hKZBWPn5ZA58lDXCemiycRUV6tF1jgZDZD'
+      data =
+      {
+        "recipient": {
+          "user_ref":@param
+        },
+        "message": {
+          "text":"Hello welcome to dogo"
+        }
+      }
+      @response = ActiveSupport::JSON.decode(RestClient.post url, data)
+      #raise "#{optin.inspect} <------------------------  -----------------------------------------"
+      #Bot.deliver({recipient: {user_ref: optin.optin['user_ref']}, message: { text: 'CATS ON FIRE'}}, access_token: 'EAADRoZCKkBjoBAAADzh8MzWYuI1tyQNrxYd81cDZCIHWWGWqUx1LGOBgyb880tPMdQWF1KZB3fVJMpMLbnWYgMos43EJRHxKDCistFxuBSYYDzd1IcR9q5lRzL6ZBcOfcJk3U4ZCZClVcDz4hKZBWPn5ZA58lDXCemiycRUV6tF1jgZDZD')
     end
   end
 
   def send_message_to_fb_user
-
+    user_ref = params[:user_ref]
+    message = params[:message]
+    url = 'https://graph.facebook.com/me/messages?access_token=EAADRoZCKkBjoBAAADzh8MzWYuI1tyQNrxYd81cDZCIHWWGWqUx1LGOBgyb880tPMdQWF1KZB3fVJMpMLbnWYgMos43EJRHxKDCistFxuBSYYDzd1IcR9q5lRzL6ZBcOfcJk3U4ZCZClVcDz4hKZBWPn5ZA58lDXCemiycRUV6tF1jgZDZD'
+    data =
+    {
+      "recipient": {
+        "user_ref": user_ref
+      },
+      "message": {
+        "text": message
+      }
+    }
+    @response = ActiveSupport::JSON.decode(RestClient.post url, data)
   end
 
   def google_analytics_website_stats

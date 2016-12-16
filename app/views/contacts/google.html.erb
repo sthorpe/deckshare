@@ -36,12 +36,6 @@ window.fbAsyncInit = function() {
     }
 
   });
-  FB.AppEvents.logEvent('MessengerCheckboxUserConfirmation', null, {
-    'app_id':'230502080710202',
-    'page_id':'1853353121565048',
-    'ref':'dogo',
-    'user_ref':'<%= @param %>'
-  });
 };
 (function(d, s, id){
    var js, fjs = d.getElementsByTagName(s)[0];
@@ -62,7 +56,11 @@ function confirmOptIn() {
 </script>
 
 <div class="fb-messenger-checkbox"
+<% if Rails.env.production? %>
   origin=https://dogo-staging.herokuapp.com
+<% else %>
+  origin=https://d3803efd.ngrok.io
+<% end %>
   page_id=1853353121565048
   messenger_app_id=230502080710202
   user_ref="<%= @param %>"

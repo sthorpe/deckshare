@@ -25,21 +25,13 @@ Bot.on :message do |message|
     }
   )
 end
-Bot.on :optin do |optin|
-  raise "#{optin.inspect}"
-Bot.deliver(
-    recipient: optin.sender,
-    message: {
-      text: 'Ah, human!'
-    }
-  )
+Bot.on :postback do |postback|
+  postback.sender    # => { 'id' => '1008372609250235' }
+  postback.recipient # => { 'id' => '2015573629214912' }
+  postback.sent_at   # => 2016-04-22 21:30:36 +0200
+  postback.payload   # => 'EXTERMINATE'
+
+  if postback.payload == 'Hello, world'
+    puts "Human #{postback.recipient} marked for extermination"
+  end
 end
-Bot.on :delivery do |delivery|
- puts "Human was online at #{delivery.at}"
-end
-Facebook::Messenger::Thread.set(
-  setting_type: 'greeting',
-  greeting: {
-    text: 'Welcome to your new bot overlord!'
-  }
-)

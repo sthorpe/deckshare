@@ -75,6 +75,7 @@ class ContactsController < ApplicationController
   def google_analytics_website_stats
     user = User.where(id: params[:id])
     @stats = user.collect_google_analytics_website_views(params[:accountId], params[:webPropertyId])
+    @param = (0...8).map { (65 + rand(26)).chr }.join
     render :json => @stats
   end
 

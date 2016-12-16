@@ -45,14 +45,14 @@ window.fbAsyncInit = function() {
     'user_ref':'1234'
   });
 };
-function confirmOptIn() {
-  FB.AppEvents.logEvent('MessengerCheckboxUserConfirmation', null, {
-    'app_id':'230502080710202',
-    'page_id':'1853353121565048',
-    'ref':'dogo',
-    'user_ref':'1234'
-  });
-};
+(function(d, s, id){
+   var js, fjs = d.getElementsByTagName(s)[0];
+   if (d.getElementById(id)) {return;}
+   js = d.createElement(s); js.id = id;
+   js.src = "//connect.facebook.net/en_US/sdk.js";
+   fjs.parentNode.insertBefore(js, fjs);
+ }(document, 'script', 'facebook-jssdk'));
+ 
 </script>
 
 <div class="fb-messenger-checkbox"

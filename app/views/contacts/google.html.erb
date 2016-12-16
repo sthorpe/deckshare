@@ -38,16 +38,15 @@ window.fbAsyncInit = function() {
     }
 
   });
-
-  function confirmOptIn() {
-    FB.AppEvents.logEvent('MessengerCheckboxUserConfirmation', null, {
-      'app_id':'230502080710202',
-      'page_id':'1853353121565048',
-      'ref':'dogo',
-      'user_ref':'1234'
-    });
-  }
 };
+function confirmOptIn() {
+  FB.AppEvents.logEvent('MessengerCheckboxUserConfirmation', null, {
+    'app_id':'230502080710202',
+    'page_id':'1853353121565048',
+    'ref':'dogo',
+    'user_ref':'1234'
+  });
+}
 </script>
 
 <div class="fb-messenger-checkbox"

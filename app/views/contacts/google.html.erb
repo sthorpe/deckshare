@@ -11,10 +11,8 @@
   </label>
   <h4>Calendar Appointments</h4>
 </div>
-<% end %>
 
 <script>
-debugger
 window.fbAsyncInit = function() {
   FB.init({
     appId      : '230502080710202',
@@ -52,7 +50,7 @@ window.fbAsyncInit = function() {
    js.src = "//connect.facebook.net/en_US/sdk.js";
    fjs.parentNode.insertBefore(js, fjs);
  }(document, 'script', 'facebook-jssdk'));
- 
+
 </script>
 
 <div class="fb-messenger-checkbox"
@@ -64,5 +62,23 @@ window.fbAsyncInit = function() {
   allow_login="true"
   size="medium">
 </div>
+<% end %>
 
-<input type="button" onclick="confirmOptIn()" value="Confirm Opt-in"/>
+<script>
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId      : '230502080710202',
+      xfbml      : true,
+      version    : 'v2.8'
+    });
+    FB.AppEvents.logPageView();
+  };
+
+  (function(d, s, id){
+     var js, fjs = d.getElementsByTagName(s)[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement(s); js.id = id;
+     js.src = "//connect.facebook.net/en_US/sdk.js";
+     fjs.parentNode.insertBefore(js, fjs);
+   }(document, 'script', 'facebook-jssdk'));
+</script>

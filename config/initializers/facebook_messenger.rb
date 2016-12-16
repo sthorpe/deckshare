@@ -26,6 +26,7 @@ Bot.on :message do |message|
   )
 end
 Bot.on :optin do |optin|
+  raise "#{optin.inspect}"
 Bot.deliver(
     recipient: optin.sender,
     message: {

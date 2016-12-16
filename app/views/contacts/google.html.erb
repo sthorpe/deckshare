@@ -13,43 +13,4 @@
 </div>
 <% end %>
 
-<script>
-
- window.fbAsyncInit = function() {
-  FB.init({
-    appId      : '230502080710202',
-    xfbml      : true,
-    version    : 'v2.6'
-  });
-
-  FB.Event.subscribe('messenger_checkbox', function(e) {
-    console.log("messenger_checkbox event");
-    console.log(e);
-
-    if (e.event == 'rendered') {
-      console.log("Plugin was rendered");
-    } else if (e.event == 'checkbox') {
-      var checkboxState = e.state;
-      console.log("Checkbox state: " + checkboxState);
-    } else if (e.event == 'not_you') {
-      console.log("User clicked 'not you'");
-    } else if (e.event == 'hidden') {
-      console.log("Plugin was hidden");
-    }
-
-  });
-};
-</script>
-
-<div class="fb-messenger-checkbox"
-  origin=https://dogo-staging.herokuapp.com
-  page_id=1853353121565048
-  messenger_app_id=230502080710202
-  user_ref="UNIQUE_REF_PARAM"
-  prechecked="true"
-  allow_login="true"
-  size="medium">
-</div>
-
-
 <input type="button" onclick="confirmOptIn()" value="Confirm Opt-in"/>

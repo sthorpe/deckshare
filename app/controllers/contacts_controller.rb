@@ -65,6 +65,7 @@ class ContactsController < ApplicationController
   def google
     @contacts = current_user.contacts
     @ga_portals = current_user.collect_google_analytics_websites.data.items
+    @param = (0...8).map { (65 + rand(26)).chr }.join
     # Clearbit.key = 'sk_8152ae059fd7e013e5291314295331f2'
     # @enrichment = Clearbit::Enrichment.find(email: 'scott@mogotix.com', stream: true)
     # @discovery = Clearbit::Discovery.search(query: {tech: 'marketo', raised: '100000~'}, sort: 'alexa_asc')
@@ -75,7 +76,6 @@ class ContactsController < ApplicationController
   def google_analytics_website_stats
     user = User.where(id: params[:id])
     @stats = user.collect_google_analytics_website_views(params[:accountId], params[:webPropertyId])
-    @param = (0...8).map { (65 + rand(26)).chr }.join
     render :json => @stats
   end
 

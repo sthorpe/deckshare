@@ -56,7 +56,7 @@ function confirmOptIn() {
 </script>
 
 <div class="fb-messenger-checkbox"
-<% if Rails.env.production? %>
+<% if Rails.env.staging? %>
   origin=https://dogo-staging.herokuapp.com
 <% else %>
   origin=https://d3803efd.ngrok.io

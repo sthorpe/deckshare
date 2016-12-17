@@ -65,7 +65,7 @@ class ContactsController < ApplicationController
   end
 
   def google
-    if Rails.env.production?
+    if Rails.env.staging?
       @contacts = current_user.contacts
     else
       current_user = User.where(email: 'sthorpe@gmail.com').take

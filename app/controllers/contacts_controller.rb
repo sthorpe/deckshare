@@ -65,12 +65,12 @@ class ContactsController < ApplicationController
   end
 
   def google
-    if Rails.env.staging?
+    # if Rails.env.staging?
       @contacts = current_user.contacts
-    else
-      current_user = User.where(email: 'sthorpe@gmail.com').take
-      @contacts = current_user.contacts
-    end
+    # else
+    #   current_user = User.where(email: 'sthorpe@gmail.com').take
+    #   @contacts = current_user.contacts
+    # end
     @ga_portals = current_user.collect_google_analytics_websites.data.items
     @param = (0...8).map { (65 + rand(26)).chr }.join
     Facebook::Messenger::Subscriptions.subscribe(access_token: ENV['ACCESS_TOKEN'])

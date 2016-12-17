@@ -28,6 +28,7 @@ Rails.application.routes.draw do
   post :annotations, to: 'slides#create_annotation'
   get :hello_world, to: 'hello_world#index'
   get :answer_questions, to: 'questions#answer_questions'
+  get :send_message_to_fb_user, to: 'contacts#send_message_to_fb_user'
   match :webhook, to: 'webhook#bot', as: :webhook, via: [:get, :post]
   get :signup, to: 'home#signup'
   root to: "home#index"

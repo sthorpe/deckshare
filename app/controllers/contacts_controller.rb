@@ -92,6 +92,17 @@ class ContactsController < ApplicationController
     #   optin.reply(text: 'Ah, human!')
     # end
 
+    Bot.on :message do |message|
+      message.id          # => 'mid.1457764197618:41d102a3e1ae206a38'
+      message.sender      # => { 'id' => '1008372609250235' }
+      message.seq         # => 73
+      message.sent_at     # => 2016-04-22 21:30:36 +0200
+      message.text        # => 'Hello, bot!'
+      message.attachments # => [ { 'type' => 'image', 'payload' => { 'url' => 'https://www.example.com/1.jpg' } } ]
+
+      message.reply(text: 'Hello, human!')
+    end
+
     Bot.on :optin do |optin|
       url = 'https://graph.facebook.com/me/messages?access_token=EAADRoZCKkBjoBAAADzh8MzWYuI1tyQNrxYd81cDZCIHWWGWqUx1LGOBgyb880tPMdQWF1KZB3fVJMpMLbnWYgMos43EJRHxKDCistFxuBSYYDzd1IcR9q5lRzL6ZBcOfcJk3U4ZCZClVcDz4hKZBWPn5ZA58lDXCemiycRUV6tF1jgZDZD'
       data =
@@ -110,18 +121,15 @@ class ContactsController < ApplicationController
   end
 
   def send_message_to_fb_user
-    user_ref = params[:user_ref]
-    message = params[:message]
     url = 'https://graph.facebook.com/me/messages?access_token=EAADRoZCKkBjoBAAADzh8MzWYuI1tyQNrxYd81cDZCIHWWGWqUx1LGOBgyb880tPMdQWF1KZB3fVJMpMLbnWYgMos43EJRHxKDCistFxuBSYYDzd1IcR9q5lRzL6ZBcOfcJk3U4ZCZClVcDz4hKZBWPn5ZA58lDXCemiycRUV6tF1jgZDZD'
-    data =
-    {
-      "recipient": {
-        "user_ref": user_ref
-      },
-      "message": {
-        "text": message
-      }
-    }
+    data =  {
+              "recipient": {
+                "user_ref": params[:user_ref]
+              },
+              "message": {
+                "text": params[:message]
+              }
+            }
     @response = ActiveSupport::JSON.decode(RestClient.post url, data)
   end
 

@@ -71,3 +71,38 @@ function confirmOptIn() {
 
 
  <input type="button" onclick="confirmOptIn()" value="Confirm Opt-in"/>
+
+
+
+ <h1></DIC> Chat Box</h1>
+<div class="chatBox"></div>
+
+<div class="usersOnLine"></div>
+
+<form class="messageForm">
+	<input class="message" type="text">
+	<input class="send" type="button" value="Send">
+  <input class="fb_param" type="hidden" value="<%= @param %>"
+<div class="serverRes"></div>
+
+<script>
+$(document).on('click','.send',function(){
+  var admin_message = $('.message').val();
+  $('.message').val('');
+  var fb_param = $('.fb_param').val();
+  $('.chatBox').append(admin_message + '<br />');
+
+  // ajaxController to send message to fb
+  data = { user_ref: fb_param, message: admin_message};
+  path = 'send_message_to_fb_user';
+  App.ajaxController(data, path, 'GET');
+});
+$(document).ready(function() {
+  $(window).keydown(function(event){
+    if(event.keyCode == 13) {
+      event.preventDefault();
+      return false;
+    }
+  });
+});
+</script>

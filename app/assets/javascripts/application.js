@@ -44,7 +44,7 @@ App.ajaxController = function(data, path, httpmethod){
   function callback_receiving_data(){
   }
   $.ajax({
-     url: build_url(),
+     url: build_url(path),
      method: httpmethod,
      data: data,
      success: function(){

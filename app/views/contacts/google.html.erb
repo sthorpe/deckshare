@@ -101,4 +101,31 @@ $(document).ready(function() {
     }
   });
 });
+var isActive = true;
+
+$().ready(function () {
+    //EITHER USE A GLOBAL VAR OR PLACE VAR IN HIDDEN FIELD
+    //IF FOR WHATEVER REASON YOU WANT TO STOP POLLING
+    pollServer();
+});
+
+function pollServer()
+{
+    if (isActive)
+    {
+        window.setTimeout(function () {
+            $.ajax({
+                url: "/receive_message_from_fb",
+                type: "GET",
+                success: function (result) {
+                    console.log(result);
+                    pollServer();
+                },
+                error: function () {
+                    //ERROR HANDLING
+                    pollServer();
+                }});
+        }, 2500);
+    }
+}
 </script>

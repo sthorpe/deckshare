@@ -29,6 +29,7 @@ Rails.application.routes.draw do
   get :hello_world, to: 'hello_world#index'
   get :answer_questions, to: 'questions#answer_questions'
   get :send_message_to_fb_user, to: 'contacts#send_message_to_fb_user'
+  get :receive_message_from_fb, to: 'contacts#receive_message_from_fb'
   match :webhook, to: 'webhook#bot', as: :webhook, via: [:get, :post]
   get :signup, to: 'home#signup'
   root to: "home#index"

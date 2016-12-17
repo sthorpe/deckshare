@@ -65,7 +65,7 @@ class ContactsController < ApplicationController
   end
 
   def google
-    # if Rails.env.staging?
+    # if Rails.env.production?
       @contacts = current_user.contacts
     # else
     #   current_user = User.where(email: 'sthorpe@gmail.com').take
@@ -136,16 +136,16 @@ class ContactsController < ApplicationController
   def receive_message_from_fb
     Facebook::Messenger::Subscriptions.subscribe(access_token: ENV['ACCESS_TOKEN'])
     Bot.on :message do |message|
-      raise "#{message.inspect} ---------------------------------------------------------"
       message.id          # => 'mid.1457764197618:41d102a3e1ae206a38'
       message.sender      # => { 'id' => '1008372609250235' }
       message.seq         # => 73
       message.sent_at     # => 2016-04-22 21:30:36 +0200
       message.text        # => 'Hello, bot!'
       message.attachments # => [ { 'type' => 'image', 'payload' => { 'url' => 'https://www.example.com/1.jpg' } } ]
-
-      message.reply(text: 'Hello, human!')
+      @message_body = message.text
+      #message.reply(text: 'Hello, human!')
     end
+    render :json => 'test'
   end
 
   def google_analytics_website_stats

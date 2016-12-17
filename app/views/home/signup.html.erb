@@ -1,15 +1,13 @@
-<div class="col-xs-12 col-sm-12">
-  <!-- copy main element to have full width container -->
-  <header class="header-element header-element-bg epic-header-1" style="background-image: url('images/header-img/header-1.png');">
-    <div class="container-fluid element-content">
-      <div class="header-info center-div">
-        <h2 class="color-black spacing">Demystify the Fundraising Process</h2>
-        <div class="signup-wrapper">
-          <div class="color-black spacing">Get content and tools to help you raise money for your startup.</div>
-          <%= link_to 'Sign in with Google to request early access', user_omniauth_authorize_path(:google_oauth2, :signup => true), class: 'btn btn-primary signup-text' %>
-        </div>
-      </div>
-    </div>
-  </header>
-  <!-- main element end -->
-</div>
+<header>
+</header>
+
+<section class="content cta">
+  <h1>Raising money for your startup?</h1>
+  <h3>Get free expert advice in real-time!</h3>
+  <form action="/preview" method="post" class="main-cta">
+    <input type="text" id="url_input" name="url" class="input-main-cta top" placeholder="Your email address">
+    <button type="submit" class="btn-main-cta" href="loading.html">Send to Messenger</button>
+    <br>
+  </form>
+  <p><center>Or you can just send a "hello" message via the <a href="">Facebook Messenger website.</a></center></p>
+</section>

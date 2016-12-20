@@ -48,7 +48,12 @@
 <script>
 
 $('.btn-main-cta').bind('click keydown', function(event){
-  if(event.keyCode == 13) {
+  loadFBMesssenger();
+});
+
+function loadFBMesssenger(){
+  if(event.keyCode == 13 || event.type == "click") {
+    console.log('on keydown')
     // Validate email
     var email_address = $('#email').val();
     var fb_param = $('.fb_param').val();
@@ -65,6 +70,16 @@ $('.btn-main-cta').bind('click keydown', function(event){
       window.location.href = 'https://m.me/1853353121565048';
     }
   }
+}
+
+$(document).ready(function() {
+  $(window).keydown(function(event){
+    if(event.keyCode == 13) {
+      loadFBMesssenger()
+      event.preventDefault();
+      return false;
+    }
+  });
 });
 
 function validateEmail(email) {

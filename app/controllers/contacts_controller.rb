@@ -121,7 +121,7 @@ class ContactsController < ApplicationController
   end
 
   def send_message_to_fb_user
-    url = 'https://graph.facebook.com/me/messages?access_token=EAADRoZCKkBjoBAAADzh8MzWYuI1tyQNrxYd81cDZCIHWWGWqUx1LGOBgyb880tPMdQWF1KZB3fVJMpMLbnWYgMos43EJRHxKDCistFxuBSYYDzd1IcR9q5lRzL6ZBcOfcJk3U4ZCZClVcDz4hKZBWPn5ZA58lDXCemiycRUV6tF1jgZDZD'
+    url = 'https://graph.facebook.com/me/messages?access_token=EAADRoZCKkBjoBABZCVZCH21vdZAdKCTxi9l6ZALW5HQRL0CaDxy20cJzFTe1EgAZARQDtmZCnZBMkZCqB9zsVsZAgXijmZCunDFZAiR9wK7TepZBU8WHWpc7OIgTF7vOcVI9jQKMyxVvA7UWmvwogdgZBPxfbn67YgcnKMPt8bWOaBZARMfHgZDZD'
     data =  {
               "recipient": {
                 "user_ref": params[:user_ref]

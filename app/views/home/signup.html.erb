@@ -48,23 +48,26 @@
 <script>
 
 $('.btn-main-cta').on('click', function(){
-  // Validate email
-  var email_address = $('#email').val();
-  var fb_param = $('.fb_param').val();
-  if(email_address){
-    validate();
-    if (validateEmail(email_address)) {
-      // Sending message to messenger
-      data = { user_ref: fb_param, message: email_address};
-      path = 'send_message_to_fb_user';
-      App.ajaxController(data, path, 'GET');
-      // Send email to server
-      data = { email: email_address };
-      path = 'save_email';
-      App.ajaxController(data, path, 'POST');
-      // Redirect to messenger
-      window.location.href = 'https://m.me/1853353121565048';
-    }
+  $(document).ready(function() {
+    $(window).keydown(function(event){
+      if(event.keyCode == 13) {
+        // Validate email
+        var email_address = $('#email').val();
+        var fb_param = $('.fb_param').val();
+        if(email_address){
+          // Sending message to messenger
+          data = { user_ref: fb_param, message: email_address};
+          path = 'send_message_to_fb_user';
+          App.ajaxController(data, path, 'GET');
+          // Send email to server
+          data = { email: email_address };
+          path = 'save_email';
+          App.ajaxController(data, path, 'POST');
+          // Redirect to messenger
+          window.location.href = 'https://m.me/1853353121565048';
+      }
+    });
+  });
   }
 });
 
@@ -85,4 +88,5 @@ function validate() {
   }
   return false;
 }
+
 </script>

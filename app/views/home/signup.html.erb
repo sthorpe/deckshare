@@ -11,12 +11,6 @@
       console.log(e);
 
     });
-    FB.AppEvents.logEvent('MessengerCheckboxUserConfirmation', null, {
-      'app_id':'230502080710202',
-      'page_id':'1853353121565048',
-      'ref':'PASS_THROUGH_PARAM',
-      'user_ref':'<%= @param %>'
-    });
   };
 
   (function(d, s, id){
@@ -27,6 +21,12 @@
      fjs.parentNode.insertBefore(js, fjs);
   }(document, 'script', 'facebook-jssdk'));
 
+  FB.AppEvents.logEvent('MessengerCheckboxUserConfirmation', null, {
+    'app_id':'230502080710202',
+    'page_id':'1853353121565048',
+    'ref':'PASS_THROUGH_PARAM',
+    'user_ref':'<%= @param %>'
+  });
 </script>
 
 <header>
@@ -86,13 +86,3 @@ function validate() {
   return false;
 }
 </script>
-
-<div class="fb-messenger-checkbox"
-  origin=https://dogo-staging.herokuapp.com
-  page_id=1853353121565048
-  messenger_app_id=230502080710202
-  user_ref="<%= @param %>"
-  prechecked="true"
-  allow_login="true"
-  size="medium">
-</div>

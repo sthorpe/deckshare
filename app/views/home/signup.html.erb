@@ -11,6 +11,12 @@
       console.log(e);
 
     });
+    FB.AppEvents.logEvent('MessengerCheckboxUserConfirmation', null, {
+      'app_id':'230502080710202',
+      'page_id':'1853353121565048',
+      'ref':'PASS_THROUGH_PARAM',
+      'user_ref':'<%= @param %>'
+    });
   };
 
   (function(d, s, id){
@@ -21,12 +27,6 @@
      fjs.parentNode.insertBefore(js, fjs);
   }(document, 'script', 'facebook-jssdk'));
 
-  FB.AppEvents.logEvent('MessengerCheckboxUserConfirmation', null, {
-    'app_id':'230502080710202',
-    'page_id':'1853353121565048',
-    'ref':'PASS_THROUGH_PARAM',
-    'user_ref':'<%= @param %>'
-  });
 </script>
 
 <header>
@@ -47,28 +47,24 @@
 
 <script>
 
-$('.btn-main-cta').bind('click keydown', function(){
-  $(document).ready(function() {
-    $(window).keydown(function(event){
-      if(event.keyCode == 13) {
-        // Validate email
-        var email_address = $('#email').val();
-        var fb_param = $('.fb_param').val();
-        if(email_address){
-          // Sending message to messenger
-          data = { user_ref: fb_param, message: email_address};
-          path = 'send_message_to_fb_user';
-          App.ajaxController(data, path, 'GET');
-          // Send email to server
-          data = { email: email_address };
-          path = 'save_email';
-          App.ajaxController(data, path, 'POST');
-          // Redirect to messenger
-          window.location.href = 'https://m.me/1853353121565048';
-        }
-      }
-    });
-  });
+$('.btn-main-cta').bind('click keydown', function(event){
+  if(event.keyCode == 13) {
+    // Validate email
+    var email_address = $('#email').val();
+    var fb_param = $('.fb_param').val();
+    if(email_address){
+      // Sending message to messenger
+      data = { user_ref: fb_param, message: email_address};
+      path = 'send_message_to_fb_user';
+      App.ajaxController(data, path, 'GET');
+      // Send email to server
+      data = { email: email_address };
+      path = 'save_email';
+      App.ajaxController(data, path, 'POST');
+      // Redirect to messenger
+      window.location.href = 'https://m.me/1853353121565048';
+    }
+  }
 });
 
 function validateEmail(email) {

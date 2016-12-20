@@ -13,7 +13,7 @@ class HomeController < ApplicationController
 
   def save_email
     if request.post?
-      @newsletter = Newsletter.new(params[:email])
+      @newsletter = Newsletter.new(email: params[:email])
       @newsletter.save
     end
   end

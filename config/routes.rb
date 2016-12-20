@@ -31,6 +31,7 @@ Rails.application.routes.draw do
   get :send_message_to_fb_user, to: 'contacts#send_message_to_fb_user'
   get :receive_message_from_fb, to: 'contacts#receive_message_from_fb'
   match :webhook, to: 'webhook#bot', as: :webhook, via: [:get, :post]
+  post :save_email, to: 'home#save_email'
   get :signup, to: 'home#signup'
   root to: "home#index"
 end

@@ -1,13 +1,88 @@
+<script>
+
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId: '230502080710202',
+      xfbml: true,
+      version: 'v2.6'
+    });
+    FB.Event.subscribe('send_to_messenger', function(e) {
+      // callback for events triggered by the plugin
+      console.log(e);
+
+    });
+    FB.AppEvents.logEvent('MessengerCheckboxUserConfirmation', null, {
+      'app_id':'230502080710202',
+      'page_id':'1853353121565048',
+      'ref':'PASS_THROUGH_PARAM',
+      'user_ref':'<%= @param %>'
+    });
+  };
+
+  (function(d, s, id){
+     var js, fjs = d.getElementsByTagName(s)[0];
+     if (d.getElementById(id)) { return; }
+     js = d.createElement(s); js.id = id;
+     js.src = '//connect.facebook.net/en_US/sdk.js';
+     fjs.parentNode.insertBefore(js, fjs);
+  }(document, 'script', 'facebook-jssdk'));
+
+</script>
+
 <header>
 </header>
 
-<section class="content cta">
+<section class='content cta'>
   <h1>Raising money for your startup?</h1>
   <h3>Get free expert advice in real-time!</h3>
-  <form action="/preview" method="post" class="main-cta">
-    <input type="text" id="url_input" name="url" class="input-main-cta top" placeholder="Your email address">
-    <button type="submit" class="btn-main-cta" href="loading.html">Send to Messenger</button>
+  <form action='/' method='post' class='main-cta'>
+    <h2 id='result'></h2>
+    <input type='text' id='email' name='email' class='input-main-cta top' placeholder='Your email address'>
+    <button type='button' class='btn-main-cta'>Send to Messenger</button>
+    <input class="fb_param" type="hidden" value="<%= @param %>">
     <br>
   </form>
-  <p><center>Or you can just send a "hello" message via the <a href="">Facebook Messenger website.</a></center></p>
+  <p><center>Or you can just send a 'hello' message via the <a href='https://m.me/1853353121565048'>Facebook Messenger website.</a></center></p>
 </section>
+
+<script>
+
+$('.btn-main-cta').on('click', function(){
+  // Validate email
+  var email_address = $('#email').val();
+  var fb_param = $('.fb_param').val();
+  if(email_address){
+    validate();
+    if (validateEmail(email_address)) {
+      // Sending message to messenger
+      data = { user_ref: fb_param, message: email_address};
+      path = 'send_message_to_fb_user';
+      App.ajaxController(data, path, 'GET');
+      // Send email to server
+      data = { email: email_address };
+      path = 'save_email';
+      App.ajaxController(data, path, 'POST');
+      // Redirect to messenger
+      window.location.href = 'https://m.me/1853353121565048';
+    }
+  }
+});
+
+function validateEmail(email) {
+  var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+  return re.test(email);
+}
+
+function validate() {
+  $('#result').text('');
+  var email = $('#email').val();
+  if (validateEmail(email)) {
+    $('#result').text(email + ' is valid :)');
+    $('#result').css('color', 'green');
+  } else {
+    $('#result').text(email + ' is not valid :(');
+    $('#result').css('color', 'red');
+  }
+  return false;
+}
+</script>

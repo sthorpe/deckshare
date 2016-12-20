@@ -47,7 +47,7 @@
 
 <script>
 
-$('.btn-main-cta').on('click', function(){
+$('.btn-main-cta').bind('click keydown', function(){
   $(document).ready(function() {
     $(window).keydown(function(event){
       if(event.keyCode == 13) {
@@ -65,6 +65,7 @@ $('.btn-main-cta').on('click', function(){
           App.ajaxController(data, path, 'POST');
           // Redirect to messenger
           window.location.href = 'https://m.me/1853353121565048';
+        }
       }
     });
   });

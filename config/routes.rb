@@ -33,5 +33,5 @@ Rails.application.routes.draw do
   match :webhook, to: 'webhook#bot', as: :webhook, via: [:get, :post]
   post :save_email, to: 'home#save_email'
   get :signup, to: 'home#signup'
-  root to: "home#index"
+  root to: "home#signup"
 end
